@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.cerp.Controlador.InicioControlador;
 import com.cerp.Modelo.Pregunta;
+import com.cerp.Modelo.Preguntas; // IMPORTACIÓN NUEVA: Se usa para acceder a las preguntas por defecto
 import com.cerp.Vista.InicioVista;
 
 
@@ -37,16 +38,28 @@ public class Main {
         List<Pregunta> modelo = new ArrayList<>();        
 
         try {
-            modelo = fileHandler.fileToList();
+            modelo = fileHandler.fileToList(); // Intentar cargar preguntas desde preguntas.data
+
+            // Si no hay preguntas en el archivo, cargar desde Preguntas.java
+            if (modelo.isEmpty()) {
+                System.out.println("El archivo preguntas.data está vacío. Se cargarán las preguntas por defecto.");
+
+                // Crear una instancia de Preguntas con las preguntas predefinidas
+                Preguntas preguntas = new Preguntas();
+                modelo = preguntas.getListaPreguntas();
+
+                // Guardar las preguntas en el archivo para futuras ejecuciones
+                fileHandler.listToFile(modelo);
+                System.out.println("Preguntas por defecto guardadas en preguntas.data.");
+            }
+            
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        System.out.println("El tamanio es " + modelo.size());
+        System.out.println("El tamaño de la lista de preguntas es: " + modelo.size());
 
         /*InicioVista vistaInicio = new InicioVista();
         vistaInicio.setVisible(true);*/
@@ -63,8 +76,7 @@ public class Main {
         // Asociar el controlador como listener de los componentes de la vista
         vistaAdmin.getConfirmarButton().addActionListener(controladorAdmin);
         vistaAdmin.getAtrasButton().addActionListener(controladorAdmin);
-        vistaAdmin.getLimpiarButton().addActionListener(controladorAdmin);*/
-
-        
+        vistaAdmin.getLimpiarButton().addActionListener(controladorAdmin);
+        */
     }
 }
