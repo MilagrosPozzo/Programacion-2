@@ -1,0 +1,11 @@
+Explicación del error en el código original:
+
+El arreglo declarado es: int[] numeros = {1, 2, 3, 4, 5};
+Este arreglo tiene 5 elementos, por lo tanto sus índices válidos son del 0 al 4.
+
+El código original tenía un ciclo que iba de i = 0 hasta i < 10, lo cual intenta acceder a posiciones fuera del arreglo (como numeros[5], numeros[6], etc), provocando un error en tiempo de ejecución: ArrayIndexOutOfBoundsException.
+
+Solución:
+Cambiar la condición del for para que sea i < numeros.length, lo cual garantiza que se accede solo a índices válidos.
+
+También se corrigió la cadena concatenada para evitar un error de sintaxis.
