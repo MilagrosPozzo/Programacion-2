@@ -35,35 +35,24 @@ import java.util.Arrays;
 
 public class Problema_400 {
 
-    // Función que calcula la mediana de un arreglo de enteros
-    public static double calcularMediana(int[] arreglo) {
-        if (arreglo.length == 0) {
-            throw new IllegalArgumentException("El arreglo no debe estar vacío.");
-        }
-
-        // Clonamos el arreglo para no modificar el original
-        int[] copia = arreglo.clone();
-
-        // Ordenamos el arreglo
-        Arrays.sort(copia);
-
-        int n = copia.length;
-
-        // Si la cantidad de elementos es impar
-        if (n % 2 != 0) {
-            return copia[n / 2];
-        } else {
-            // Si es par, se promedian los dos valores del medio
-            return (copia[n / 2 - 1] + copia[n / 2]) / 2.0;
-        }
+// Función que calcula la mediana de un arreglo de enteros
+// Se declara que el tipo de valor que devuelve la función es 'double' para permitir valores con decimales
+public static double calcularMediana(int[] arreglo) {
+    if (arreglo.length == 0) {
+        throw new IllegalArgumentException("El arreglo no debe estar vacío.");
     }
 
-    // Método principal para probar la función
-    public static void main(String[] args) {
-        int[] datos = {5, 2, 9, 1, 7};
-        double mediana = calcularMediana(datos);
+    int[] copia = arreglo.clone();
+    Arrays.sort(copia);
+    int n = copia.length;
 
-        // Imprime el texto "La mediana es: " seguido del valor de la variable mediana en la consola
-        System.out.println("La mediana es: " + mediana);
+    // Si la cantidad de elementos es impar, se puede devolver el valor del medio directamente
+    if (n % 2 != 0) {
+        return copia[n / 2]; // Java convierte automáticamente el int a double si la función lo requiere
+    } else {
+        // Si es par, se promedian los dos valores centrales, por eso usamos división con decimal (/ 2.0)
+        // Si usáramos solo enteros, perderíamos la parte decimal del resultado
+        return (copia[n / 2 - 1] + copia[n / 2]) / 2.0; 
+        // Ejemplo: (4 + 6) / 2.0 = 5.0 → Resultado correcto como double
     }
 }
