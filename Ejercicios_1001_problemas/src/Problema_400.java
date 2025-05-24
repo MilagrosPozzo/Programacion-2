@@ -64,6 +64,8 @@ public class Problema_400 {
     public static void main(String[] args) {
         int[] datos = {5, 2, 9, 1, 7};
         double mediana = calcularMediana(datos);
+
+        // Imprime el texto "La mediana es: " seguido del valor de la variable mediana en la consola
         System.out.println("La mediana es: " + mediana);
     }
 }
