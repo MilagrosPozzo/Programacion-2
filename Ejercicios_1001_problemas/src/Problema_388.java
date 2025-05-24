@@ -9,6 +9,21 @@
  * Descripción:
  * Este programa solicita al usuario dos matrices del mismo tamaño y realiza su suma elemento por elemento.
  * La matriz resultante es mostrada en consola.
+ *
+ * Desarrollo paso a paso:
+ * 1. Se pide al usuario ingresar las dimensiones (filas y columnas) de las matrices.
+ * 2. Se ingresan los elementos de la primera y segunda matriz.
+ * 3. Se realiza la suma de las matrices en una tercera matriz.
+ * 4. Se imprime la matriz resultante.
+ *
+ * Ejemplo:
+ * Entrada:
+ * Matriz A:     1 2      Matriz B:     4 5
+ *               3 4                     6 7
+ *
+ * Resultado:
+ * Matriz suma:  5 7
+ *               9 11
  */
 
 // Importamos la clase Scanner para poder leer datos del usuario desde el teclado
