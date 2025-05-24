@@ -14,29 +14,35 @@ public class Problema_400 {
  * PROBLEMA 440 - Explicación y razonamiento
  *
  * Descripción del problema:
- * Se intenta imprimir los elementos de un arreglo de enteros. 
- * Sin embargo, el bucle 'for' utilizado accede a posiciones fuera de los límites válidos del arreglo.
+ * Se solicita crear una función que calcule la mediana de un arreglo de enteros.
  *
- * Problemas detectados:
- * 1. El arreglo 'numeros' tiene solo 5 elementos, con índices válidos de 0 a 4.
- * 2. El bucle for usaba la condición 'i < 10', lo cual lleva a intentar acceder a índices inválidos como numeros[5], numeros[6], etc.
- * 3. Esto provoca un error en tiempo de ejecución: ArrayIndexOutOfBoundsException.
- * 4. La expresión System.out.print(numeros[i] + "" "") contiene una concatenación de cadenas mal formada, lo que genera un error de compilación.
+ * La mediana es:
+ * - el número central en un arreglo ordenado con cantidad impar de elementos;
+ * - o el promedio de los dos valores centrales si la cantidad de elementos es par.
  *
- * Solución aplicada:
- * - Se reemplazó 'i < 10' por 'i < numeros.length' para recorrer solo los índices válidos del arreglo.
- * - Se corrigió la cadena a imprimir, usando " " para separar los valores correctamente.
+ * Desarrollo de la solución:
+ * 1. Se crea una función que recibe un arreglo de enteros.
+ * 2. Se clona el arreglo original para no modificarlo directamente.
+ * 3. Se ordena el arreglo usando Arrays.sort().
+ * 4. Se determina si la cantidad de elementos es par o impar.
+ * 5. Se devuelve la mediana como un valor tipo double.
  *
- * Resultado:
- * El código ahora imprime los valores del arreglo sin errores:
- * Ejemplo de salida: 1 2 3 4 5
+ * Resultado esperado:
+ * Si el arreglo es: {5, 2, 9, 1, 7}
+ * Ordenado: {1, 2, 5, 7, 9}
+ * La mediana es: 5.0
  */
+
 import java.util.Arrays;
 
-public class MedianaCalculator {
+public class Problema_400 {
 
     // Función que calcula la mediana de un arreglo de enteros
     public static double calcularMediana(int[] arreglo) {
+        if (arreglo.length == 0) {
+            throw new IllegalArgumentException("El arreglo no debe estar vacío.");
+        }
+
         // Clonamos el arreglo para no modificar el original
         int[] copia = arreglo.clone();
 
@@ -44,10 +50,6 @@ public class MedianaCalculator {
         Arrays.sort(copia);
 
         int n = copia.length;
-
-        if (n == 0) {
-            throw new IllegalArgumentException("El arreglo no debe estar vacío.");
-        }
 
         // Si la cantidad de elementos es impar
         if (n % 2 != 0) {
@@ -58,7 +60,7 @@ public class MedianaCalculator {
         }
     }
 
-    // Método principal para probar
+    // Método principal para probar la función
     public static void main(String[] args) {
         int[] datos = {5, 2, 9, 1, 7};
         double mediana = calcularMediana(datos);
