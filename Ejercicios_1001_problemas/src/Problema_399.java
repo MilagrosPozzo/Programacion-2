@@ -33,7 +33,7 @@ import java.util.Scanner;
  *
  * @author Milagros Pozzo
  */
-public class Problema_388 {
+public class Problema_399 {
     
     public static void main(String[] args) {
         // Creamos el objeto Scanner para leer datos desde la consola
