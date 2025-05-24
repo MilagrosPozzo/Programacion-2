@@ -34,7 +34,8 @@
 import java.util.Arrays;
 
 public class Problema_400 {
-
+    // tu función calcularMediana...
+}
 // Función que calcula la mediana de un arreglo de enteros
 // Se declara que el tipo de valor que devuelve la función es 'double' para permitir valores con decimales
 public static double calcularMediana(int[] arreglo) {
