@@ -8,7 +8,7 @@
  * @author Milagros Pozzo
  */
 
-//// Problema_102: Escribir un programa en Java que calcule la suma de todos los elementos de un arreglo de enteros.
+//Problema_102: Escribir un programa en Java que calcule la suma de todos los elementos de un arreglo de enteros.
 
 public class Problema_102 {
 

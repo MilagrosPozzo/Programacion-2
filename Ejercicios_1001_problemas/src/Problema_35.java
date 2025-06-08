@@ -7,6 +7,7 @@
  *
  * @author Milagros Pozzo
  */
+// Problema_35: ¿Cómo depurar errores lógicos en un algoritmo implementado en Java a partir de una descripción en pseudocódigo?
 public class Problema_35 {
 
     public static void main(String[] args) {
