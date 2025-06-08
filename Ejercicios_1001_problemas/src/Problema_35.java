@@ -8,16 +8,23 @@
  * @author Milagros Pozzo
  */
 public class Problema_35 {
-    
-}
-// Ejemplo concreto: si el pseudocódigo indica "sumar solo los números pares de un arreglo",
-// el código en Java debería incluir una condición como:
 
-for (int num : arreglo) {
-    if (num % 2 == 0) {
-        suma += num;
+    public static void main(String[] args) {
+        int[] arreglo = {1, 2, 3, 4, 5, 6}; // arreglo de ejemplo
+        int suma = 0;
+
+        // Ejemplo concreto: si el pseudocódigo indica "sumar solo los números pares de un arreglo",
+        // el código en Java debería incluir una condición como:
+
+        for (int num : arreglo) {
+            if (num % 2 == 0) {
+                suma += num;
+            }
+        }
+
+        System.out.println("Suma de pares: " + suma);
+
+        // Si falta esa condición, o se usa incorrectamente, el algoritmo sumará también los impares,
+        // generando un error lógico.
     }
 }
-
-// Si falta esa condición, o se usa incorrectamente, el algoritmo sumará también los impares,
-// generando un error lógico.
