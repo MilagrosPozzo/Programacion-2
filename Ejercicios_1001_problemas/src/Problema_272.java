@@ -9,7 +9,7 @@
  */
 // Problema_272 
     
-public class SumaNumerosPares {
+public class Problema_272 {
 
     // Función que calcula la suma de los números pares de un arreglo
     public static int sumarPares(int[] lista) {

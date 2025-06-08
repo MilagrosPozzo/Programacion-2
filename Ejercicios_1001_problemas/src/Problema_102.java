@@ -10,7 +10,7 @@
 
 //Problema_102
 // Declaramos la clase principal del programa
-public class SumaArreglo {
+public class Problema_102 {
 
     // Método principal, punto de entrada del programa
     public static void main(String[] args) {
