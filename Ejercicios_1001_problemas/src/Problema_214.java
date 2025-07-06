@@ -9,8 +9,6 @@
  */
 /*
  * Problema 214 - Adivinar un número
- * Autor: Milagros Pozzo
- *
  * Enunciado:
  * Escriba un programa en Java que genere un número aleatorio entre 1 y 100
  * y permita al usuario adivinarlo, indicando si el intento es mayor o menor.
