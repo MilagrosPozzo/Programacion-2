@@ -8,7 +8,33 @@
  * @author Milagros Pozzo
  */
 public class Problema_887 {
+/*
+Problema 887 - Árbol Binario de Búsqueda
 
+Enunciado:
+Andrea escribió una función en Java para eliminar un nodo en un árbol binario,
+pero no devuelve correctamente la nueva raíz ni actualiza las referencias al eliminar.
+
+Código con error (versión de Andrea):
+if (root.izquierda == null)
+    root = root.derecha;
+else if (root.derecha == null)
+    root = root.izquierda;
+else {
+    Nodo temp = buscarMinimo(root.derecha);
+    root.valor = temp.valor;
+    eliminarNodo(root.derecha, temp.valor); // ❌ No reasigna root.derecha
+}
+
+Explicación del error:
+Al eliminar un nodo con dos hijos, Andrea reemplaza el valor del nodo actual con su
+sucesor (el menor valor del subárbol derecho), pero olvida actualizar la referencia:
+root.derecha = eliminarNodo(root.derecha, temp.valor);
+
+Solución:
+Se corrige la llamada recursiva y se reestructura el método para devolver correctamente
+la nueva raíz en todos los casos.
+*/
     //Clase Nodo representa cada elemento del árbol binario
     static class Nodo {
         int valor;              // Número entero almacenado en el nodo
