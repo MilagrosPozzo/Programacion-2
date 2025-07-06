@@ -23,7 +23,7 @@ else if (root.derecha == null)
 else {
     Nodo temp = buscarMinimo(root.derecha);
     root.valor = temp.valor;
-    eliminarNodo(root.derecha, temp.valor); // ❌ No reasigna root.derecha
+    eliminarNodo(root.derecha, temp.valor); //  No reasigna root.derecha
 }
 
 Explicación del error:
