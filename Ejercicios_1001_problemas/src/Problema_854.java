@@ -65,8 +65,7 @@ public class Problema_854 {
             return 0; // Árbol vacío o rama terminada
         }
 
-        // 
-        Línea más importante: se suman el nodo actual y las sumas de ambos subárboles
+        // Línea más importante: se suman el nodo actual y las sumas de ambos subárboles
         return nodo.valor + sumarArbol(nodo.izquierda) + sumarArbol(nodo.derecha);
     }
 }
