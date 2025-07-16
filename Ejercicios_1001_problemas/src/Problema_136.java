@@ -39,8 +39,8 @@ public class Problema_136 {
 
         // --- Entrada 3: altura ---
         // Aclaramos que debe usarse punto y no coma, porque Java espera punto como separador decimal
-        System.out.print("Ingrese su altura en metros (use punto, ej: 1.75): ");
-        // Usamos double porque la altura puede tener decimales (como 1.65 o 1.80)
+        System.out.print("Ingrese su altura en metros (use coma, ej: 1,75): ");
+        // Usamos double porque la altura puede tener decimales (como 1,65 o 1,80)
         double altura = scanner.nextDouble(); // nextDouble() lee un número decimal con punto (no acepta coma)
 
         // --- Salida de datos ---
@@ -48,7 +48,7 @@ public class Problema_136 {
         // Mostramos en consola los datos ingresados por el usuario
         System.out.println("Nombre: " + nombre);           // Texto
         System.out.println("Edad: " + edad + " años");     // Entero con etiqueta "años"
-        System.out.println("Altura: " + altura + " m");    // Decimal con etiqueta "m" (metros). Usa punto para decimales ej: 1.60 m
+        System.out.println("Altura: " + altura + " m");    // Decimal con etiqueta "m" (metros). 
 
         // Cerramos el Scanner para liberar el recurso del sistema
         // Es una buena práctica de programación
