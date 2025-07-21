@@ -15,6 +15,12 @@ import java.util.Scanner; // Importamos Scanner para leer datos desde el teclado
  * Enunciado:
  * Escribir un programa en Java que calcule una potencia (base^exponente)
  * usando métodos de la clase Math.
+*
+* ¿Qué es la clase Math?
+ * Es una clase de Java que proporciona métodos estáticos para realizar operaciones
+ * matemáticas como potencias, raíces cuadradas, logaritmos, trigonometría, etc.
+ * En este caso, utilizaremos el método estático Math.pow(base, exponente) que retorna
+ * un double con el resultado de base^exponente.
  */
 
 public class Problema_89 {
