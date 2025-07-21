@@ -4,28 +4,45 @@
  */
 
 /**
+ * PROBLEMA 37 – ¿Cómo asegurar que el algoritmo en Java sigue el pseudocódigo?
+ *
+ * Este ejemplo muestra cómo convertir paso a paso un pseudocódigo básico
+ * a un programa funcional en Java. Se agregan comentarios para demostrar
+ * que la lógica se mantiene fiel.
+ *
+ * Pseudocódigo:
+ * Inicio
+ *   Leer número
+ *   Si número es par
+ *     Mostrar "Es par"
+ *   Sino
+ *     Mostrar "Es impar"
+ * Fin
  *
  * @author Milagros Pozzo
  */
-// Problema_35: ¿Cómo depurar errores lógicos en un algoritmo implementado en Java a partir de una descripción en pseudocódigo?
-public class Problema_35 {
+
+import java.util.Scanner; // Importamos Scanner para leer datos del usuario
+
+public class Problema_37 {
 
     public static void main(String[] args) {
-        int[] arreglo = {1, 2, 3, 4, 5, 6}; // arreglo de ejemplo
-        int suma = 0;
+        // Creamos un objeto Scanner para capturar la entrada del usuario por consola
+        Scanner sc = new Scanner(System.in);
 
-        // Ejemplo concreto: si el pseudocódigo indica "sumar solo los números pares de un arreglo",
-        // el código en Java debería incluir una condición como:
+        // Paso 1 del pseudocódigo: Leer un número
+        System.out.print("Ingrese un número: ");
+        int numero = sc.nextInt(); // Leemos y guardamos el número en una variable
 
-        for (int num : arreglo) {
-            if (num % 2 == 0) {
-                suma += num;
-            }
+        // Paso 2: Verificamos si el número es par (si es divisible entre 2)
+        if (numero % 2 == 0) {
+            // Paso 3: Si es par, mostramos el mensaje correspondiente
+            System.out.println("Es par");
+        } else {
+            // Paso 4: Si no es par, mostramos que es impar
+            System.out.println("Es impar");
         }
 
-        System.out.println("Suma de pares: " + suma);
-
-        // Si falta esa condición, o se usa incorrectamente, el algoritmo sumará también los impares,
-        // generando un error lógico.
+        sc.close(); // Cerramos el Scanner para liberar recursos
     }
 }
