@@ -1,0 +1,21 @@
+/*
+ * PROBLEMA 20 – ¿Es cierto que la orientación a objetos en Java es obsoleta?
+ * ¿Qué ventajas ofrece aún frente a la programación estructurada?
+ *
+ * Respuesta (nivel novato):
+ * No, la orientación a objetos en Java no es obsoleta. De hecho, sigue siendo una
+ * de las formas más utilizadas para desarrollar programas organizados y fáciles de mantener.
+ *
+ * A diferencia de la programación estructurada, que se basa en funciones sueltas
+ * y estructuras como if, while, for, etc., la orientación a objetos permite organizar
+ * el código en clases y objetos, lo que mejora la reutilización, el mantenimiento y 
+ * la escalabilidad del software.
+ *
+ * También facilita dividir programas grandes en partes más pequeñas y comprensibles,
+ * por ejemplo, usando clases para representar personas, autos o productos.
+ *
+ * Esta forma de programar sigue siendo ampliamente utilizada, especialmente en
+ * aplicaciones modernas, grandes o complejas.
+ *
+ * @author Milagros Pozzo
+ */
