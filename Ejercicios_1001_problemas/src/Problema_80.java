@@ -4,7 +4,9 @@
  */
 
 /**
- * PROBLEMA 80 – Calcular el área de un círculo a partir de su radio.
+ * PROBLEMA 80 – Escribir un programa en Java que lea el radio de un círculo y calcule su área utilizando
+ * la clase Math para obtener π.
+ * Calcular el área de un círculo a partir de su radio.
  *
  * Descripción:
  * Se solicita al usuario que ingrese el radio de un círculo. Luego, usando la fórmula:
