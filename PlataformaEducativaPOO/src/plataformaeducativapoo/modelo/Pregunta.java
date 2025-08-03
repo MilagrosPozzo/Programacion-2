@@ -6,13 +6,13 @@
  * @author Milagros Pozzo
  */
 package plataformaeducativapoo.modelo; 
-// Línea 1: Indica en qué paquete se encuentra esta clase (estructura del proyecto).
+// Indica en qué paquete se encuentra esta clase (estructura del proyecto).
 
 import java.util.List; 
-// Línea 3: Importamos List porque vamos a usar una lista (arreglo dinámico) para guardar las opciones de respuesta.
+// Importamos List porque vamos a usar una lista (arreglo dinámico) para guardar las opciones de respuesta.
 
 public class Pregunta { 
-    // Línea 6: Declaramos una clase pública llamada Pregunta.
+    // Declaramos una clase pública llamada Pregunta.
 
     // Atributos o variables que describen a la pregunta:
     private String enunciado; // Guarda el texto de la pregunta.
@@ -21,7 +21,7 @@ public class Pregunta {
 
     // Constructor: método especial que se ejecuta cuando se crea una nueva pregunta.
     public Pregunta(String enunciado, List<String> opciones, int indiceCorrecto) {
-        // Línea 13: El constructor recibe el texto de la pregunta, la lista de opciones y cuál es la respuesta correcta.
+        // El constructor recibe el texto de la pregunta, la lista de opciones y cuál es la respuesta correcta.
         this.enunciado = enunciado; 
         this.opciones = opciones; 
         this.indiceCorrecto = indiceCorrecto;
@@ -29,7 +29,7 @@ public class Pregunta {
 
     // Método que verifica si la opción elegida por el usuario es la correcta
     public boolean esCorrecta(int respuestaUsuario) {
-        // Línea 20: Compara la respuesta dada por el usuario con la opción correcta
+        // Compara la respuesta dada por el usuario con la opción correcta
         return respuestaUsuario == indiceCorrecto; 
         // Devuelve true si acertó, false si se equivocó
     }
