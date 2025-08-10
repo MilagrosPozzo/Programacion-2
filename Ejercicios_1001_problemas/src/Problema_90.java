@@ -4,8 +4,7 @@
  */
 
 /**
- * PROBLEMA 90 – Recorrer un rango de enteros y mostrar los números primos encontrados.
- *
+ * PROBLEMA 90 – Escribir un programa en Java que recorra un rango de enteros y muestre los números primos encontrados.
  * Razonamiento:
  * 1. El usuario ingresa el inicio y el fin del rango.
  * 2. Recorremos todos los números en ese rango.
