@@ -1,5 +1,0 @@
-Breve explicación de la etapa de Análisis Orientado a Objetos y función del Diagrama de Clases Conceptual de UML:
-La etapa de Análisis Orientado a Objetos se centra en comprender y modelar el problema que el sistema debe resolver,
- identificando y organizando las entidades del dominio como objetos y sus relaciones. Sirve para establecer una base sólida
- para el diseño posterior. El Diagrama de Clases Conceptual de UML dentro de esta etapa se utiliza para representar las clases
- clave del dominio, sus atributos y relaciones sin entrar en detalles de implementación, facilitando la comprensión del problema.
