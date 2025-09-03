@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Bienvenido a FrioExpress");
         
-        // Aquí puedes crear objetos de tus clases
+        // En este espacio se pueden crear objetos de las clases
         // Ejemplo:
         // Cliente cliente = new Cliente("Juan Pérez");
         // Producto producto = new Producto("Helado", 100);
