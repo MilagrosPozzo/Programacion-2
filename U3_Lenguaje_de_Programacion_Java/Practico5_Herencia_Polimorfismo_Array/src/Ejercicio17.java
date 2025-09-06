@@ -7,21 +7,8 @@
  *
  * @author Milagros Pozzo
  */
-public class Ejercicio17 {
-    
-}
 /*
 // DESAFÍO 17: LISTA DE NOMBRES
-
-ENUNCIADO:
-Implementar un programa que use un ArrayList<String> para almacenar nombres ingresados 
-manualmente y luego mostrarlos en pantalla. Resolver nivel inicial comentar y explicar 
-razonamiento desde la línea 1 del código sin numerarlo. Fundamentación de la solución 
-bien detallada: Explicar la estrategia, qué pensaste para resolver el problema, etc.
-*/
-
-/*
-🎯 DESAFÍO 17: LISTA DE NOMBRES
 
 ENUNCIADO:
 Implementar un programa que use un ArrayList<String> para almacenar nombres ingresados 
@@ -40,7 +27,7 @@ import java.util.Scanner;
 
 // Declaramos nuestra clase principal que contendrá toda la lógica del programa
 // El nombre de la clase debe coincidir exactamente con el nombre del archivo .java
-public class ListaNombres {
+ public class Ejercicio17 {
     
     // Método main: punto de entrada de cualquier programa Java
     // Es el primer método que se ejecuta cuando corremos el programa
