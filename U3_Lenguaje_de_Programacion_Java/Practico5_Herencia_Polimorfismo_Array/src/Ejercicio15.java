@@ -8,101 +8,167 @@
  * @author Milagros Pozzo
  */
 
-// EJERCICIO 15 - Identificador: Ej15
-// Simulamos una carrera de Vehiculo (Auto y Moto) con 5 rondas y distancia aleatoria por turno.
-import java.util.Random; // import para números aleatorios
+/*
+ Desafío 15 - Nivel inicial
+ Simula una carrera de Vehiculo (subclases Auto y Moto) en la que cada vehículo
+ avanza una distancia aleatoria en cada turno. Usamos un arreglo polimórfico
+ para los competidores y determinamos el ganador al final de 5 rondas.
 
-public class Ejercicio15 { // clase pública Ejercicio15
-    public static void main(String[] args) { // método main
-        Vehiculo[] competidores = new Vehiculo[] { // arreglo polimórfico de competidores
-            new Auto("Auto1"), // auto 1
-            new Moto("Moto1"), // moto 1
-            new Auto("Auto2"), // auto 2
-            new Moto("Moto2") // moto 2
-        }; // fin arreglo
+ Explicación y razonamiento desde la línea 1 (nivel inicial, lenguaje sencillo):
+ - La idea es representar lo común a todos los vehículos (nombre y distancia recorrida)
+   en una clase abstracta llamada Vehiculo. Esa clase tendrá un método abstracto
+   avanzar() que cada tipo de vehículo implementará según su "estilo" de avance.
+ - Usamos un arreglo de tipo Vehiculo[] para guardar los competidores: esto es
+   polimorfismo porque el arreglo tiene el tipo de la clase base (Vehiculo) pero
+   los objetos reales son Auto o Moto. Así podemos tratar a todos igual en el bucle.
+ - En cada una de las 5 rondas, recorremos todos los competidores, llamamos a
+   su método avanzar() y sumamos la distancia que avanzaron a su total.
+ - Al final de las 5 rondas, comparamos las distancias totales para encontrar
+   al ganador; si hay empate, mostramos todos los que quedaron igualados.
+ - Para mantener el nivel inicial, las distancias aleatorias son sencillas y
+   usamos Random para generarlas. Los mensajes impresos son claros para ver
+   lo que sucede en cada ronda.
+*/
 
-        Random rnd = new Random(); // generador aleatorio para las distancias
-        int rondas = 5; // número de rondas a simular
+import java.util.Random; // Importamos Random para generar números aleatorios
 
-        // inicializamos distancias recorridas a cero
-        for (Vehiculo v : competidores) { // para cada competidor
-            v.setDistanciaRecorrida(0.0); // ponemos distancia inicial en 0.0
-        } // fin for
+// Clase abstracta Vehiculo: contiene lo común (nombre y distancia acumulada)
+// y obliga a las subclases a definir cómo avanzan (método abstracto avanzar()).
+abstract class Vehiculo {
+    protected String nombre;           // Nombre del vehículo (p. ej. "Auto Rojo")
+    protected int distanciaRecorrida;  // Distancia total recorrida por el vehículo
 
-        // simulamos las rondas
-        for (int r = 1; r <= rondas; r++) { // bucle de rondas (1..5)
-            System.out.println("=== Ronda " + r + " ==="); // encabezado de ronda
-            for (Vehiculo v : competidores) { // cada competidor avanza una distancia aleatoria
-                double avance = 1.0 + rnd.nextDouble() * 9.0; // avance entre 1.0 y 10.0
-                v.avanzar(avance); // el vehículo avanza esa distancia (método polimórfico puede modificar)
-                System.out.println(v.getNombre() + " avanza " + String.format("%.2f", avance) 
-                                   + " m (Total: " + String.format("%.2f", v.getDistanciaRecorrida()) + " m)");
-                // mostramos avance y total acumulado
-            } // fin for competidores
-            System.out.println(); // línea en blanco entre rondas
-        } // fin for rondas
+    // Usamos un Random estático compartido para evitar crear muchos Randoms.
+    // Esto es práctico y fácil de entender para nivel inicial.
+    protected static Random random = new Random();
 
-        // determinamos el ganador (mayor distancia acumulada)
-        Vehiculo ganador = competidores[0]; // asumimos primer competidor como candidato inicial
-        for (int i = 1; i < competidores.length; i++) { // recorremos el resto
-            if (competidores[i].getDistanciaRecorrida() > ganador.getDistanciaRecorrida()) { // comparativa
-                ganador = competidores[i]; // actualizamos ganador si encontramos mayor distancia
-            } // fin if
-        } // fin for
+    // Constructor: inicializa el nombre y pone la distancia en 0 al crear el vehículo.
+    public Vehiculo(String nombre) {
+        this.nombre = nombre;
+        this.distanciaRecorrida = 0; // empezamos la carrera con 0 metros recorridos
+    }
 
-        // mostramos el resultado final
-        System.out.println("GANADOR: " + ganador.getNombre() + " con " + 
-                           String.format("%.2f", ganador.getDistanciaRecorrida()) + " m recorridos.");
-    } // fin main
-} // fin clase Ejercicio15
+    // Método que las subclases deben implementar: hacer que el vehículo avance.
+    // Debe devolver cuántos metros avanzó en ese turno (para mostrarlo).
+    public abstract int avanzar();
 
-// Clase base Vehiculo con nombre y distancia acumulada.
-abstract class Vehiculo { // clase base para vehículos
-    protected String nombre; // nombre identificador del vehículo
-    protected double distanciaRecorrida; // distancia total acumulada
+    // Método para agregar la distancia al total (lo llamamos desde avanzar())
+    protected void agregarDistancia(int metros) {
+        this.distanciaRecorrida += metros;
+    }
 
-    public Vehiculo(String nombre) { // constructor
-        this.nombre = nombre; // asignación nombre
-        this.distanciaRecorrida = 0.0; // inicializamos distancia en 0.0
-    } // fin constructor
+    // Getter para obtener la distancia total recorrida
+    public int getDistanciaRecorrida() {
+        return distanciaRecorrida;
+    }
 
-    public String getNombre() { // getter del nombre
-        return nombre; // devuelve nombre
-    } // fin getNombre
+    // Getter para el nombre del vehículo
+    public String getNombre() {
+        return nombre;
+    }
 
-    public double getDistanciaRecorrida() { // getter de distancia acumulada
-        return distanciaRecorrida; // devuelve distancia
-    } // fin getDistanciaRecorrida
+    // Método para mostrar el estado actual del vehículo (útil durante la simulación)
+    public void mostrarEstado() {
+        System.out.println(nombre + " -> distancia total: " + distanciaRecorrida + " m");
+    }
+}
 
-    public void setDistanciaRecorrida(double d) { // setter de distancia (uso inicial)
-        this.distanciaRecorrida = d; // asigna distancia
-    } // fin setter
+// Clase Auto: define cómo avanza un auto en cada turno.
+// Aquí decidimos que un Auto avanzará entre 5 y 15 metros por turno (rango simple).
+class Auto extends Vehiculo {
+    public Auto(String nombre) {
+        super(nombre); // reutilizamos el constructor de la clase base para inicializar el nombre
+    }
 
-    // avanzar añade la distancia al acumulador; puede sobrescribirse si se desea
-    public void avanzar(double metros) { // método que actualiza la distancia
-        this.distanciaRecorrida += metros; // sumamos metros recorridos
-    } // fin avanzar
-} // fin Vehiculo
-
-// Subclase Auto (no modifica el comportamiento por defecto)
-class Auto extends Vehiculo { // Auto extiende Vehiculo
-    public Auto(String nombre) { // constructor Auto
-        super(nombre); // invoca constructor base
-    } // fin constructor
-
-    // podemos sobrescribir avanzar() si queremos reglas especiales; aquí usamos la base
-} // fin Auto
-
-// Subclase Moto (podríamos darle ventaja o penalización, pero mantendremos simple)
-class Moto extends Vehiculo { // Moto extiende Vehiculo
-    public Moto(String nombre) { // constructor Moto
-        super(nombre); // invoca constructor base
-    } // fin constructor
-
-    // ejemplo: podríamos sobrescribir avanzar para que motos tengan ligera ventaja:
     @Override
-    public void avanzar(double metros) { // sobrescribimos avanzar para motos
-        double bonus = 0.05 * metros; // la moto añade un 5% extra de avance (simulado)
-        this.distanciaRecorrida += metros + bonus; // aplicamos avance + bonus
-    } // fin avanzar
-} // fin Moto
+    public int avanzar() {
+        // Generamos una distancia aleatoria entre 5 y 15 (inclusive).
+        // random.nextInt(11) devuelve 0..10, por eso sumamos 5 para obtener 5..15.
+        int metros = 5 + random.nextInt(11);
+        agregarDistancia(metros); // actualizamos la distancia total del vehículo
+        return metros;            // devolvemos lo avanzado este turno para mostrarlo
+    }
+}
+
+// Clase Moto: define cómo avanza una moto en cada turno.
+// Decidimos que una Moto avanzará entre 3 y 12 metros por turno (rango simple).
+class Moto extends Vehiculo {
+    public Moto(String nombre) {
+        super(nombre);
+    }
+
+    @Override
+    public int avanzar() {
+        // Generamos una distancia aleatoria entre 3 y 12 (inclusive).
+        // random.nextInt(10) devuelve 0..9, sumamos 3 para obtener 3..12.
+        int metros = 3 + random.nextInt(10);
+        agregarDistancia(metros);
+        return metros;
+    }
+}
+
+// Clase principal con el método main: aquí se arma la carrera y se ejecutan las 5 rondas.
+public class Desafio15 {
+    public static void main(String[] args) {
+        // Creamos un arreglo polimórfico de Vehiculo.
+        // Aunque el arreglo es de tipo Vehiculo, los objetos reales pueden ser Auto o Moto.
+        // Esto permite tratar a todos los competidores de forma uniforme.
+        Vehiculo[] competidores = new Vehiculo[] {
+            new Auto("Auto Rojo"),
+            new Moto("Moto Azul"),
+            new Auto("Auto Verde")
+        };
+
+        // Cantidad de rondas definida por el enunciado: 5 rondas
+        final int RONDAS = 5;
+
+        // Mostramos una cabecera simple para la simulación
+        System.out.println("Inicio de la carrera - " + RONDAS + " rondas\n");
+
+        // Bucle principal: recorremos las rondas
+        for (int ronda = 1; ronda <= RONDAS; ronda++) {
+            System.out.println("Ronda " + ronda + ":");
+            // Para cada competidor, llamamos a su método avanzar() y mostramos lo que avanzó
+            for (Vehiculo v : competidores) {
+                int avanzados = v.avanzar(); // llamada polimórfica: a runtime se ejecuta Auto.avanzar o Moto.avanzar
+                // Mostramos cuánto avanzó en esta ronda y su total acumulado
+                System.out.println("  " + v.getNombre() + " avanzó " + avanzados + " m (total: " + v.getDistanciaRecorrida() + " m)");
+            }
+            System.out.println(); // línea en blanco para separar rondas y mejorar lectura
+        }
+
+        // Al terminar las rondas, determinamos qué vehículo recorrió más metros
+        int maximaDistancia = -1;
+        for (Vehiculo v : competidores) {
+            if (v.getDistanciaRecorrida() > maximaDistancia) {
+                maximaDistancia = v.getDistanciaRecorrida();
+            }
+        }
+
+        // Recolectamos todos los vehículos que igualaron la máxima distancia (manejo de empates)
+        StringBuilder ganadores = new StringBuilder();
+        int contadorGanadores = 0;
+        for (Vehiculo v : competidores) {
+            if (v.getDistanciaRecorrida() == maximaDistancia) {
+                if (contadorGanadores > 0) {
+                    ganadores.append(", ");
+                }
+                ganadores.append(v.getNombre());
+                contadorGanadores++;
+            }
+        }
+
+        // Mostramos resultado final
+        System.out.println("Resultado final:");
+        for (Vehiculo v : competidores) {
+            v.mostrarEstado(); // imprime nombre y distancia total
+        }
+
+        // Mensaje de ganador o empate
+        if (contadorGanadores == 1) {
+            System.out.println("\n¡El ganador es: " + ganadores.toString() + " con " + maximaDistancia + " m!");
+        } else {
+            System.out.println("\nEmpate entre: " + ganadores.toString() + " con " + maximaDistancia + " m cada uno.");
+        }
+    }
+}
