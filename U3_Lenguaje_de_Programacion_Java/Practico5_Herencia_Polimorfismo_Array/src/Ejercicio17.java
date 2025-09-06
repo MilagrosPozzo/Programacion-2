@@ -20,6 +20,16 @@ razonamiento desde la línea 1 del código sin numerarlo. Fundamentación de la 
 bien detallada: Explicar la estrategia, qué pensaste para resolver el problema, etc.
 */
 
+/*
+🎯 DESAFÍO 17: LISTA DE NOMBRES
+
+ENUNCIADO:
+Implementar un programa que use un ArrayList<String> para almacenar nombres ingresados 
+manualmente y luego mostrarlos en pantalla. Resolver nivel inicial comentar y explicar 
+razonamiento desde la línea 1 del código sin numerarlo. Fundamentación de la solución 
+bien detallada: Explicar la estrategia, qué pensaste para resolver el problema, etc.
+*/
+
 // Importamos ArrayList desde el paquete java.util para poder usar estructuras de datos dinámicas
 // ArrayList nos permite crear listas que pueden crecer y reducirse automáticamente según necesitemos
 import java.util.ArrayList;
