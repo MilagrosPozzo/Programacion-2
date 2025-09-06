@@ -7,55 +7,76 @@
  *
  * @author Milagros Pozzo
  */
-// EJERCICIO 6 - Identificador: Ej6
-// Clase principal para probar Personaje, Mago y Guerrero.
-// Cada línea tiene un comentario explicativo para pegar en NetBeans.
-public class Ejercicio6 { // clase pública del archivo Ejercicio6.java
-    public static void main(String[] args) { // método main para ejecutar el ejemplo
-        Personaje mago = new Mago("Gandalf", 10); // instanciamos un Mago con nombre y nivel
-        mago.accionEspecial(); // mostramos la acción especial del mago (polimorfismo)
-        Personaje guerrero = new Guerrero("Conan", 8); // instanciamos un Guerrero
-        guerrero.accionEspecial(); // mostramos la acción especial del guerrero
-    } // fin del main
-} // fin de la clase Ejercicio6
+/*
+ Desafío 6 - Nivel inicial (explicación en lenguaje sencillo)
 
-// Clase abstracta Personaje con atributos nombre y nivel.
-// No se declara 'public' porque ya hay una clase pública en este archivo.
-abstract class Personaje { // definición de la clase base abstracta
-    protected String nombre; // atributo para almacenar el nombre del personaje
-    protected int nivel; // atributo para almacenar el nivel del personaje
+ Estrategia:
+ 1) Crear la clase abstracta Personaje con nombre y nivel.
+ 2) Definir el método abstracto accionEspecial(), sin cuerpo.
+ 3) Crear las clases Mago y Guerrero que heredan de Personaje.
+ 4) Cada una implementa su propia versión de accionEspecial().
+ 5) En el main, instanciamos un Mago y un Guerrero y probamos sus acciones.
+*/
 
-    public Personaje(String nombre, int nivel) { // constructor para inicializar atributos
-        this.nombre = nombre; // asignación del nombre recibido
-        this.nivel = nivel; // asignación del nivel recibido
-    } // fin del constructor
+// Clase abstracta base: sirve como "plantilla"
+abstract class Personaje {
+    protected String nombre; // Nombre del personaje
+    protected int nivel;     // Nivel del personaje
 
-    // método abstracto que deberá implementar cada subclase.
-    public abstract void accionEspecial(); // firma del método abstracto
-} // fin de la clase Personaje
+    // Constructor para inicializar atributos
+    public Personaje(String nombre, int nivel) {
+        this.nombre = nombre;
+        this.nivel = nivel;
+    }
 
-// Implementación de la clase Mago que hereda de Personaje.
-class Mago extends Personaje { // Mago extiende Personaje
-    public Mago(String nombre, int nivel) { // constructor de Mago
-        super(nombre, nivel); // invoca al constructor de la clase base
-    } // fin del constructor
+    // Método abstracto: las clases hijas están obligadas a implementarlo
+    public abstract void accionEspecial();
 
-    @Override // indicamos que sobrescribimos el método abstracto
-    public void accionEspecial() { // implementación concreta para Mago
-        // mostramos en pantalla la acción especial del mago utilizando nombre y nivel
-        System.out.println("Mago " + nombre + " (nv " + nivel + ") lanza un hechizo de fuego."); 
-    } // fin de accionEspecial
-} // fin de la clase Mago
+    // Método común: mostrar la información del personaje
+    public void mostrarInfo() {
+        System.out.println("Nombre: " + nombre + " | Nivel: " + nivel);
+    }
+}
 
-// Implementación de la clase Guerrero que hereda de Personaje.
-class Guerrero extends Personaje { // Guerrero extiende Personaje
-    public Guerrero(String nombre, int nivel) { // constructor de Guerrero
-        super(nombre, nivel); // invoca el constructor de la clase base
-    } // fin del constructor
+// Clase Mago que hereda de Personaje
+class Mago extends Personaje {
+    public Mago(String nombre, int nivel) {
+        super(nombre, nivel);
+    }
 
-    @Override // indicamos que sobrescribimos el método abstracto
-    public void accionEspecial() { // implementación concreta para Guerrero
-        // mostramos en pantalla la acción especial del guerrero utilizando nombre y nivel
-        System.out.println("Guerrero " + nombre + " (nv " + nivel + ") realiza un ataque poderoso."); 
-    } // fin de accionEspecial
-} // fin de la clase Guerrero
+    // Implementación propia de la acción especial
+    @Override
+    public void accionEspecial() {
+        System.out.println(nombre + " lanza un hechizo de fuego");
+    }
+}
+
+// Clase Guerrero que hereda de Personaje
+class Guerrero extends Personaje {
+    public Guerrero(String nombre, int nivel) {
+        super(nombre, nivel);
+    }
+
+    // Implementación propia de la acción especial
+    @Override
+    public void accionEspecial() {
+        System.out.println(nombre + " realiza un ataque con su espada");
+    }
+}
+
+// Clase principal con el main para probar
+class Desafio6 {
+    public static void main(String[] args) {
+        // Creamos un Mago y un Guerrero
+        Personaje mago = new Mago("Gandalf", 50);
+        Personaje guerrero = new Guerrero("Aragorn", 45);
+
+        // Mostramos su información
+        mago.mostrarInfo();
+        guerrero.mostrarInfo();
+
+        // Cada uno ejecuta su acción especial (polimorfismo en acción)
+        mago.accionEspecial();
+        guerrero.accionEspecial();
+    }
+}
