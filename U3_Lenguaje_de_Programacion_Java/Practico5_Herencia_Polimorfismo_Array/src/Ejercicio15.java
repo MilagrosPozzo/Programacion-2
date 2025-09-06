@@ -108,7 +108,7 @@ class Moto extends Vehiculo {
 }
 
 // Clase principal con el método main: aquí se arma la carrera y se ejecutan las 5 rondas.
-public class Desafio15 {
+class Desafio15 {
     public static void main(String[] args) {
         // Creamos un arreglo polimórfico de Vehiculo.
         // Aunque el arreglo es de tipo Vehiculo, los objetos reales pueden ser Auto o Moto.
