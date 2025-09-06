@@ -7,9 +7,9 @@
  *
  * @author Milagros Pozzo
  */
+
 /*
  Desafío 6 - Nivel inicial (explicación en lenguaje sencillo)
-
  Estrategia:
  1) Crear la clase abstracta Personaje con nombre y nivel.
  2) Definir el método abstracto accionEspecial(), sin cuerpo.
@@ -22,16 +22,16 @@
 abstract class Personaje {
     protected String nombre; // Nombre del personaje
     protected int nivel;     // Nivel del personaje
-
+    
     // Constructor para inicializar atributos
     public Personaje(String nombre, int nivel) {
         this.nombre = nombre;
         this.nivel = nivel;
     }
-
+    
     // Método abstracto: las clases hijas están obligadas a implementarlo
     public abstract void accionEspecial();
-
+    
     // Método común: mostrar la información del personaje
     public void mostrarInfo() {
         System.out.println("Nombre: " + nombre + " | Nivel: " + nivel);
@@ -43,7 +43,7 @@ class Mago extends Personaje {
     public Mago(String nombre, int nivel) {
         super(nombre, nivel);
     }
-
+    
     // Implementación propia de la acción especial
     @Override
     public void accionEspecial() {
@@ -56,7 +56,7 @@ class Guerrero extends Personaje {
     public Guerrero(String nombre, int nivel) {
         super(nombre, nivel);
     }
-
+    
     // Implementación propia de la acción especial
     @Override
     public void accionEspecial() {
@@ -70,11 +70,11 @@ class Desafio6 {
         // Creamos un Mago y un Guerrero
         Personaje mago = new Mago("Gandalf", 50);
         Personaje guerrero = new Guerrero("Aragorn", 45);
-
+        
         // Mostramos su información
         mago.mostrarInfo();
         guerrero.mostrarInfo();
-
+        
         // Cada uno ejecuta su acción especial (polimorfismo en acción)
         mago.accionEspecial();
         guerrero.accionEspecial();
