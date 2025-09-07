@@ -41,7 +41,7 @@ public class Problema_151 {
         // Comentario explicativo sobre la limpieza del buffer
         // Limpiamos el buffer antes de leer la cadena
         
-        // ¡MUY IMPORTANTE! Limpia el buffer de entrada
+        // Limpia el buffer de entrada
         // Consume el salto de código (\n) que quedó después de nextInt()
         // Sin este código, nextLine() leería una cadena vacía
         sc.nextLine(); 
