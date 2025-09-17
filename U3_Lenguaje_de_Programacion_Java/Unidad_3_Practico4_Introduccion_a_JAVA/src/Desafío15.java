@@ -1,5 +1,5 @@
 /*
- Desafío 15 - Nivel inicial
+ Desafío 15 
  Simula una carrera de Vehiculo (subclases Auto y Moto) en la que cada vehículo
  avanza una distancia aleatoria en cada turno. Usamos un arreglo polimórfico
  para los competidores y determinamos el ganador al final de 5 rondas.
@@ -98,7 +98,7 @@ class Moto extends Vehiculo {
 }
 
 // Clase principal con el método main: aquí se arma la carrera y se ejecutan las 5 rondas.
-public class Desafio15 {
+public class Desafío15 {
     public static void main(String[] args) {
         // Creamos un arreglo polimórfico de Vehiculo.
         // Aunque el arreglo es de tipo Vehiculo, los objetos reales pueden ser Auto o Moto.

@@ -7,7 +7,7 @@
 
 import java.util.concurrent.ThreadLocalRandom; // Importamos ThreadLocalRandom, generador de números aleatorios moderno en Java
 
-public class Desafio3 { // Declaramos la clase principal
+public class Desafío3 { // Declaramos la clase principal
     public static void main(String[] args) { // Método main: punto de entrada de la aplicación
         final int MIN = 0;                  // Valor mínimo del rango de números aleatorios
         final int MAX = 10;                 // Valor máximo del rango de números aleatorios
