@@ -1,4 +1,12 @@
-
+/*
+ * Ejercicio 3 - Secuencia de números aleatorios con suma condicional
+ * Descripción: Implementar un programa en Java que genere una secuencia de 
+ * enteros al azar entre 0 y 10. El programa debe ir desplegando cada entero 
+ * en pantalla junto con un mensaje que diga si es par o no lo es. Además, el 
+ * programa debe ir sumando todos los valores impares que se vayan generando. 
+ * El procesamiento debe detenerse en el momento en que la suma supere el valor 25. 
+ * Al finalizar, el programa debe desplegar en pantalla la suma calculada.
+ */
 // Definimos el paquete donde se encuentra nuestra clase
 // Esto ayuda a organizar el código y evitar conflictos de nombres
 package ejercicio3;
