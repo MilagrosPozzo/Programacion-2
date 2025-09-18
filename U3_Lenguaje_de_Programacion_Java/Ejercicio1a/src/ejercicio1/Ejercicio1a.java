@@ -8,12 +8,12 @@
  * que no es posible resolver el problema.
  */
 
-package ejercicio1a;
+package ejercicio1;
 // Importamos la clase Random del paquete java.util para generar números aleatorios
 import java.util.Random;
 
 // Declaramos la clase principal del programa
-public class Ejercicio1a {
+public class Ejercicio1 {
     
     // Método principal donde inicia la ejecución del programa
     public static void main(String[] args) {
