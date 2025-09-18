@@ -1,0 +1,4 @@
+SensorPresion
+SensorTemperatura
+Ejercicio10
+Sensor
