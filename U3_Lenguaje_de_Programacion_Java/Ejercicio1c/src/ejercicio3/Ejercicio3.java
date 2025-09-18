@@ -1,14 +1,14 @@
 
 // Definimos el paquete donde se encuentra nuestra clase
 // Esto ayuda a organizar el código y evitar conflictos de nombres
-package ejercicio1c;
+package ejercicio3;
 
 // Importamos la clase Random del paquete java.util 
 // Esta clase nos permite generar números pseudoaleatorios
 import java.util.Random;
 
 // Declaramos la clase pública que contiene nuestro programa
-public class Ejercicio1c {
+public class Ejercicio3 {
     
     // Método principal que será ejecutado cuando se lance el programa
     // Es el punto de entrada de cualquier aplicación Java
