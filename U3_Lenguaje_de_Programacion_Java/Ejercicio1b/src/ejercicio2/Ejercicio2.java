@@ -1,11 +1,12 @@
+
 // Definimos el paquete donde se encuentra nuestra clase
-package ejercicio1b;
+package ejercicio2;
 
 // Importamos la clase Random del paquete java.util para generar números pseudoaleatorios
 import java.util.Random;
 
 // Declaramos la clase pública Ejercicio1b que contiene nuestro programa
-public class Ejercicio1b {
+public class Ejercicio2 {
     
     // Método principal que será el punto de entrada de nuestro programa
     // Es donde la JVM (Java Virtual Machine) comenzará a ejecutar nuestro código
