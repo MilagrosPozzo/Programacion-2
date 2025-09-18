@@ -1,4 +1,9 @@
-
+/*
+ * Ejercicio 2 - Suma de enteros consecutivos
+ * Descripción: Implementar un programa en Java que genere un entero m al azar. 
+ * El programa debe desplegar en pantalla el entero generado, y posteriormente 
+ * debe calcular y desplegar la suma de todos los enteros existentes entre 1 y m.
+ */
 // Definimos el paquete donde se encuentra nuestra clase
 package ejercicio2;
 
