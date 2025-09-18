@@ -1,3 +1,13 @@
+/*
+ * Ejercicio 1 - División con números aleatorios
+ * Descripción: Implementar un programa en Java que genere dos valores enteros 
+ * al azar llamados a y b. El programa debe desplegar los valores de a y b y 
+ * luego calcular y desplegar en pantalla el cociente y el resto de dividir a 
+ * entre b. Antes de hacer los cálculos, se debe chequear que b sea distinto 
+ * de cero. En caso contrario, se debe desplegar un mensaje de error indicando 
+ * que no es posible resolver el problema.
+ */
+
 package ejercicio1a;
 // Importamos la clase Random del paquete java.util para generar números aleatorios
 import java.util.Random;
