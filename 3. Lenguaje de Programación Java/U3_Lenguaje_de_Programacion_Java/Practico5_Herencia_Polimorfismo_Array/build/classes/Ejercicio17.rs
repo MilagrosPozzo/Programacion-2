@@ -1,2 +1,0 @@
-Ejercicio17
-ListaNombres

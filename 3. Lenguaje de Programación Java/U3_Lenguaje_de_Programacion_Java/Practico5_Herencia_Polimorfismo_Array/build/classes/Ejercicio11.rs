@@ -1,4 +1,0 @@
-Netflix
-PlataformaStreaming
-Ejercicio11
-YouTube

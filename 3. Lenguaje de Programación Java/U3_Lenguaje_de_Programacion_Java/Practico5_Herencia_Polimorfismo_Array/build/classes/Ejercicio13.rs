@@ -1,4 +1,0 @@
-Helicoptero
-VehiculoAereo
-Avion
-Ejercicio13
