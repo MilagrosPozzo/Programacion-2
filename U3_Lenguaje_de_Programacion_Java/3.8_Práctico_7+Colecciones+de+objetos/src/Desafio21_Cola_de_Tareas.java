@@ -1,12 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+// Desafio21_Cola_de_Tareas
+// Implementar una LinkedList<String> para simular una cola de tareas pendientes. 
+// Extraer la primera tarea y mostrar la siguiente en orden.
 
-/**
- *
- * @author Acer
- */
 public class Desafio21_Cola_de_Tareas {
     
 }
