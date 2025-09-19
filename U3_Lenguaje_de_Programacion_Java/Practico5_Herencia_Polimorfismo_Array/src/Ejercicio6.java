@@ -65,7 +65,7 @@ class Guerrero extends Personaje {
 }
 
 // Clase principal con el main para probar
-class Desafio6 {
+class Ejercicio6 {
     public static void main(String[] args) {
         // Creamos un Mago y un Guerrero
         Personaje mago = new Mago("Gandalf", 50);
