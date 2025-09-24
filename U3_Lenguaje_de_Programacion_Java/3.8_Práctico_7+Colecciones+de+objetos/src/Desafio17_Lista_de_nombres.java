@@ -1,6 +1,7 @@
-// Desafio17_Lista_de_nombres
-// Programa que lee nombres y los almacena en un ArrayList, mostrando luego el contenido. 
-
+/*
+* Desafio17_Lista_de_nombres
+* Programa que lee nombres y los almacena en un ArrayList, mostrando luego el contenido. 
+*/
 import java.util.ArrayList; // Importamos la clase ArrayList
 import java.util.Scanner;   // Importamos Scanner para leer desde teclado
 

@@ -1,12 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author Acer
- */
-public class Desafio22_Diccionario_de_palabras {
-    
-}
+* Desafío 22 – Diccionario de palabras
+*Crear un TreeMap<String,String> que almacene palabras en inglés como clave y su traducción al español como valor. 
+*Mostrar en orden alfabético.
+*/

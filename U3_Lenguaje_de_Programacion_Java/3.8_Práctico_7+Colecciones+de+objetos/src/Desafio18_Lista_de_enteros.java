@@ -1,6 +1,8 @@
-// Desafio18_Lista_de_enteros
-// Lee enteros en un ArrayList y calcula el promedio.
-
+/* 
+* Desafio18_Lista_de_enteros
+* Crear un ArrayList<Integer> con números enteros. 
+* El programa debe calcular y mostrar el promedio de los valores.
+*/
 import java.util.ArrayList; // Para la lista dinámica
 import java.util.Scanner;   // Para entrada de usuario
 

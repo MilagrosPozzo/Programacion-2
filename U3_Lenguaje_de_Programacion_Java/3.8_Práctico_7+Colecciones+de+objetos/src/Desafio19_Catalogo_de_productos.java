@@ -1,52 +1,40 @@
 /*
- * Crear un ArrayList<Integer> con números enteros. El programa debe calcular y mostrar el promedio de
-/ los valores.
+ * Desafio19_Catalogo_de_productos
+* Usar un HashMap<Integer,String> donde la clave sea el código de producto y el valor su nombre. 
+* Mostrar todos los productos con sus claves.
  */
-import java.util.ArrayList; // Para la lista dinámica
-import java.util.Scanner;   // Para entrada de usuario
+import java.util.HashMap; // Importamos HashMap para crear estructura clave-valor eficiente
+import java.util.Map;     // Importamos Map interface para usar Entry en la iteración
+import java.util.Scanner; // Importamos Scanner para capturar entrada del usuario desde consola
 
 public class Desafio19_Catalogo_de_productos {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in); // Para leer desde consola
-        // Explicación: Scanner conecta con la entrada estándar (teclado)
+        Scanner scanner = new Scanner(System.in); // Creamos objeto Scanner vinculado a entrada estándar
         
-        System.out.print("¿Cuántos números enteros vas a ingresar? ");
-        int n = Integer.parseInt(scanner.nextLine().trim()); // Número de valores
-        // Explicación: parseInt convierte texto a entero; trim() quita espacios extra
+        System.out.print("¿Cuántos productos vas a ingresar? ");
+        int n = Integer.parseInt(scanner.nextLine().trim()); // Leemos línea, eliminamos espacios y convertimos a entero
         
-        ArrayList<Integer> numeros = new ArrayList<>(); // Lista para almacenar enteros
-        // Explicación: Integer es la versión objeto de int, necesaria para ArrayList
+        HashMap<Integer, String> catalogo = new HashMap<>(); // Inicializamos HashMap: código(Integer) -> nombre(String)
         
-        for (int i = 0; i < n; i++) { // Bucle para ingresar cada número
-            System.out.print("Ingrese entero #" + (i + 1) + ": ");
-            int valor = Integer.parseInt(scanner.nextLine().trim()); // Leemos un entero
-            // Explicación: Convertimos la entrada de texto a número entero
-            numeros.add(valor); // Lo agregamos a la lista
-            // Explicación: add() coloca el elemento al final del ArrayList
+        // Bucle para ingresar n productos al catálogo
+        for (int i = 0; i < n; i++) {
+            System.out.print("Ingrese código del producto #" + (i + 1) + ": "); // Mostramos número correlativo (+1 para mostrar desde 1)
+            int codigo = Integer.parseInt(scanner.nextLine().trim()); // Convertimos entrada a entero para usar como clave
+            
+            System.out.print("Ingrese nombre del producto #" + (i + 1) + ": ");
+            String nombre = scanner.nextLine(); // Leemos nombre como String sin conversión adicional
+            
+            catalogo.put(codigo, nombre); // Insertamos par clave-valor; si código existe, sobreescribe el nombre anterior
         }
         
-        if (numeros.isEmpty()) { // Comprobamos si la lista está vacía
-            // Explicación: isEmpty() retorna true si no hay elementos en la lista
-            System.out.println("No se ingresaron números. No se puede calcular promedio.");
-        } else {
-            int suma = 0; // Variable para sumar
-            // Explicación: Inicializamos en 0 para empezar a acumular
-            
-            for (int v : numeros) { // Recorremos cada número con for-each
-                // Explicación: for-each toma automáticamente cada elemento de la lista
-                suma += v; // Acumulamos cada valor en suma
-                // Explicación: += es lo mismo que escribir: suma = suma + v
-            }
-            
-            // Calculamos promedio como double para no perder decimales
-            double promedio = (double) suma / numeros.size();
-            // Explicación: (double) convierte suma a decimal; size() cuenta elementos
-            
-            System.out.printf("El promedio es: %.2f%n", promedio); // Mostramos con 2 decimales
-            // Explicación: printf permite formatear; %.2f muestra exactamente 2 decimales
+        System.out.println("\nCatálogo de productos:"); // Salto de línea para separar entrada de salida
+        
+        // Iteramos usando entrySet() que devuelve Set<Map.Entry> con pares clave-valor
+        for (Map.Entry<Integer, String> entrada : catalogo.entrySet()) {
+            // getKey() obtiene la clave (código), getValue() obtiene el valor (nombre)
+            System.out.println("Código: " + entrada.getKey() + " - Nombre: " + entrada.getValue());
         }
         
-        scanner.close(); // Cerramos scanner
-        // Explicación: close() libera los recursos del scanner (buena práctica)
+        scanner.close(); // Liberamos recursos del Scanner para evitar memory leaks
     }
 }
