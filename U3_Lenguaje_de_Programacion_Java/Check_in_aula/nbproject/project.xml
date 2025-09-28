@@ -5,7 +5,9 @@
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>Check_in_aula</name>
             <source-roots>
-                <root id="src.dir"/>
+                <root id="src..git.dir" name="git"/>
+                <root id="src..idea.dir" name="idea"/>
+                <root id="src.src.dir" name="src"/>
             </source-roots>
             <test-roots>
                 <root id="test.src.dir"/>
