@@ -6,9 +6,11 @@ import edu.cerp.checkin.ui.CheckInGUI;
 
 public class App {
     public static void main(String[] args) {
-        boolean usarGui = true;
-        for (String a : args) if ("--gui".equalsIgnoreCase(a)) usarGui = true;
-
+        boolean usarGui = false;  // ✅ Cambiar de true a false
+        for (String a : args) if ("--gui".equalsIgnoreCase(a)) {
+            usarGui = true;
+        }
+        
         SesionService service = new SesionService();
         service.cargarDatosDemo(); // datos de prueba
 
