@@ -6,7 +6,7 @@ import edu.cerp.checkin.ui.CheckInGUI;
 
 public class App {
     public static void main(String[] args) {
-        boolean usarGui = false;  // ✅ Cambiar de true a false
+        boolean usarGui = false;  // Cambiar de true a false
         for (String a : args) if ("--gui".equalsIgnoreCase(a)) {
             usarGui = true;
         }
@@ -18,7 +18,7 @@ public class App {
             // TODO (AHORA): crear edu.cerp.checkin.ui.CheckInGUI con método estático show(service)
             // y descomentar la línea siguiente para lanzar tu GUI.
             CheckInGUI.show(service);
-            // System.out.println("⚠ GUI no implementada. Corre sin --gui para usar consola.");
+            // System.out.println(" GUI no implementada. Corre sin --gui para usar consola.");
         } else {
             MainConsole.run(service);
         }
