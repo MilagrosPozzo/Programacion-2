@@ -12,15 +12,12 @@ public class App {
         }
         
         SesionService service = new SesionService();
-        service.cargarDatosDemo(); // datos de prueba
+        service.cargarDatosDemo(); // Datos de prueba precargados
 
         if (usarGui) {
-            // TODO (AHORA): crear edu.cerp.checkin.ui.CheckInGUI con método estático show(service)
-            // y descomentar la línea siguiente para lanzar tu GUI.
-            CheckInGUI.show(service);
-            // System.out.println(" GUI no implementada. Corre sin --gui para usar consola.");
+            CheckInGUI.show(service);   // Ejecuta la GUI
         } else {
-            MainConsole.run(service);
+            MainConsole.run(service);   // Ejecuta la consola
         }
     }
 }
