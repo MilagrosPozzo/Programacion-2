@@ -27,7 +27,8 @@ replay_pid*
 # AGREGADO PARA ESTE PROYECTO
 # ====================================
 
-# Carpetas de compilación
+# Carpetas de compilación (salida de javac)
+# Se genera al compilar con: javac -d out $(find src -name "*.java")
 /out/
 /bin/
 /build/
