@@ -22,3 +22,35 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# ====================================
+# AGREGADO PARA ESTE PROYECTO
+# ====================================
+
+# Carpetas de compilación
+/out/
+/bin/
+/build/
+/target/
+/dist/
+
+# Configuración de NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+
+# Configuración de IntelliJ IDEA
+*.iml
+.idea/
+
+# Configuración de Eclipse
+.classpath
+.project
+.settings/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
