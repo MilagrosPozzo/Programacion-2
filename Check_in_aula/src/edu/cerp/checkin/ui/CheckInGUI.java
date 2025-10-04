@@ -5,6 +5,7 @@ import edu.cerp.checkin.logic.SesionService;
 import edu.cerp.checkin.model.Inscripcion;
 
 import javax.swing.*;   // Librería para ventanas, botones, etc.
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;      // Para layouts (cómo se acomodan los componentes)
 import java.util.List;  // Para trabajar con listas de inscripciones
 
@@ -14,7 +15,8 @@ import java.util.List;  // Para trabajar con listas de inscripciones
  */
 public class CheckInGUI extends JFrame {
     private final SesionService service;          // Usamos el mismo service que en consola
-    private final DefaultListModel<String> modeloLista; // Modelo para mostrar inscripciones en la GUI
+    private final DefaultTableModel modeloTabla;  // Modelo para JTable
+    private final JTextArea txtResumen;           // Área para mostrar resumen por curso
 
     // Campos de entrada de datos
     private JTextField txtNombre;
@@ -31,8 +33,17 @@ public class CheckInGUI extends JFrame {
         txtDocumento = new JTextField(10);
         cbCurso = new JComboBox<>(new String[]{"Prog 1", "Prog 2", "Base de Datos"});
         JButton btnRegistrar = new JButton("Registrar ✔");
-        modeloLista = new DefaultListModel<>();
-        JList<String> lista = new JList<>(modeloLista);
+        
+        // Tabla con columnas
+        String[] columnas = {"Nombre", "Documento", "Curso", "Hora"};
+        modeloTabla = new DefaultTableModel(columnas, 0);
+        JTable tabla = new JTable(modeloTabla);
+        JScrollPane scrollTabla = new JScrollPane(tabla);
+        
+         // Resumen (abajo de la tabla)
+        txtResumen = new JTextArea(5, 30);
+        txtResumen.setEditable(false);
+        JScrollPane scrollResumen = new JScrollPane(txtResumen);
 
         // Panel del formulario (arriba)
         JPanel form = new JPanel(new GridLayout(4, 2, 5, 5));
@@ -44,57 +55,60 @@ public class CheckInGUI extends JFrame {
         // Layout de la ventana
         setLayout(new BorderLayout(10, 10));
         add(form, BorderLayout.NORTH);
-        add(new JScrollPane(lista), BorderLayout.CENTER);
+        add(scrollTabla, BorderLayout.CENTER); // usamos la tabla aquí
+        add(scrollResumen, BorderLayout.SOUTH);
 
-        // Acción del botón
+         // ==== Acción del botón Registrar ====
         btnRegistrar.addActionListener(e -> {
-            String n = txtNombre.getText();
-            String d = txtDocumento.getText();
+            String n = txtNombre.getText().trim();
+            String d = txtDocumento.getText().trim();
             String c = (String) cbCurso.getSelectedItem();
-            service.registrar(n, d, c); // Reutilizamos SesionService
-            actualizarLista();          // Refrescamos la lista
+
+            // Validación simple: no aceptar nombre vacío
+            if (n.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El nombre no puede estar vacío.", 
+                                              "Error de validación", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            service.registrar(n, d, c);   // Usar lógica central
+            actualizarTabla();            // Refrescar la tabla
+            actualizarResumen();          // Refrescar el resumen
+
+            // Limpiar campos
             txtNombre.setText("");
             txtDocumento.setText("");
         });
 
-        // Llenamos lista inicial
-        actualizarLista();
+        // ==== Inicializar ====
+        actualizarTabla();
+        actualizarResumen();
 
-        // Configuración de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 400);
+        setSize(600, 400);
         setLocationRelativeTo(null); // Centrar
     }
 
-    // Refrescar la lista con inscripciones actuales
-private void actualizarLista() {
-    modeloLista.clear();
-    modeloLista.addElement("═══════════════════════════════════════");
-    modeloLista.addElement("  INSCRIPCIONES REGISTRADAS");
-    modeloLista.addElement("═══════════════════════════════════════");
-    
-    List<Inscripcion> inscripciones = service.listar();
-    for (Inscripcion i : inscripciones) {
-        // Formato limpio: solo HH:mm:ss (sin nanosegundos)
-        String hora = String.format("%02d:%02d:%02d",
-            i.getFechaHora().getHour(),
-            i.getFechaHora().getMinute(),
-            i.getFechaHora().getSecond()
-        );
-        
-        modeloLista.addElement(String.format("%-20s | %s | %-15s | %s",
-            i.getNombre(), 
-            i.getDocumento(), 
-            i.getCurso(),
-            hora
-        ));
+    // Refrescar la tabla con todas las inscripciones
+    private void actualizarTabla() {
+        modeloTabla.setRowCount(0); // limpiar
+        List<Inscripcion> inscripciones = service.listar();
+        for (Inscripcion i : inscripciones) {
+            modeloTabla.addRow(new Object[]{
+                    i.getNombre(),
+                    i.getDocumento(),
+                    i.getCurso(),
+                    i.getFechaHora().toLocalTime().withNano(0) // solo hora
+            });
+        }
     }
-    
-    modeloLista.addElement("───────────────────────────────────────");
-    modeloLista.addElement("Total: " + inscripciones.size() + " estudiantes");
-}
 
-    // Método estático que usa App.java para abrir la GUI
+    // Refrescar resumen por curso
+    private void actualizarResumen() {
+        txtResumen.setText(service.resumen());
+    }
+
+    // Método estático para abrir la GUI
     public static void show(SesionService service) {
         SwingUtilities.invokeLater(() -> new CheckInGUI(service).setVisible(true));
     }
