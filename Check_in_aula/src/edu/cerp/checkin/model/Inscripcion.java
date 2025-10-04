@@ -12,7 +12,7 @@ public class Inscripcion {
         this.nombre = nombre;
         this.documento = documento;
         this.curso = curso;
-        this.fechaHora = fechaHora;
+        this.fechaHora = LocalDateTime.now();  // Hora AUTOMÁTICA
     }
 
     public String getNombre() { return nombre; }

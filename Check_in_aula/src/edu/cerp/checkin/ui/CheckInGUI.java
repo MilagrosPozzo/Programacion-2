@@ -67,13 +67,32 @@ public class CheckInGUI extends JFrame {
     }
 
     // Refrescar la lista con inscripciones actuales
-    private void actualizarLista() {
-        modeloLista.clear();
-        List<Inscripcion> inscripciones = service.listar();
-        for (Inscripcion i : inscripciones) {
-            modeloLista.addElement(i.getNombre() + " | " + i.getDocumento() + " | " + i.getCurso());
-        }
+private void actualizarLista() {
+    modeloLista.clear();
+    modeloLista.addElement("═══════════════════════════════════════");
+    modeloLista.addElement("  INSCRIPCIONES REGISTRADAS");
+    modeloLista.addElement("═══════════════════════════════════════");
+    
+    List<Inscripcion> inscripciones = service.listar();
+    for (Inscripcion i : inscripciones) {
+        // Formato limpio: solo HH:mm:ss (sin nanosegundos)
+        String hora = String.format("%02d:%02d:%02d",
+            i.getFechaHora().getHour(),
+            i.getFechaHora().getMinute(),
+            i.getFechaHora().getSecond()
+        );
+        
+        modeloLista.addElement(String.format("%-20s | %s | %-15s | %s",
+            i.getNombre(), 
+            i.getDocumento(), 
+            i.getCurso(),
+            hora
+        ));
     }
+    
+    modeloLista.addElement("───────────────────────────────────────");
+    modeloLista.addElement("Total: " + inscripciones.size() + " estudiantes");
+}
 
     // Método estático que usa App.java para abrir la GUI
     public static void show(SesionService service) {
