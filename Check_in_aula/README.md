@@ -31,11 +31,14 @@ javac -d out src/edu/cerp/checkin/**/*.java
 ```
 ## 📌 Ejecución
 ### Modo consola
-
-bashjava -cp out edu.cerp.checkin.App
+```bash
+java -cp out edu.cerp.checkin.App
+```
 
 ### Modo gráfico (GUI)
-bashjava -cp out edu.cerp.checkin.App --gui
+```bash
+java -cp out edu.cerp.checkin.App --gui
+```
 
 ## 📂 Estructura mínima del proyecto
 ```
