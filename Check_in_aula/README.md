@@ -28,3 +28,31 @@ Permite trabajar tanto por consola como con interfaz gráfica (Swing).
 **Desde terminal:**
 ```bash
 javac -d out src/edu/cerp/checkin/**/*.java
+```
+## 📌 Ejecución
+### Modo consola
+
+bashjava -cp out edu.cerp.checkin.App
+
+### Modo gráfico (GUI)
+bashjava -cp out edu.cerp.checkin.App --gui
+
+## 📂 Estructura mínima del proyecto
+```
+src/
+└─ edu/cerp/checkin/
+   ├─ model/
+   │  └─ Inscripcion.java
+   ├─ logic/
+   │  └─ SesionService.java
+   ├─ console/
+   │  └─ MainConsole.java
+   ├─ ui/
+   │  └─ CheckInGUI.java
+   └─ App.java
+   ```
+
+## 👨‍💻 Autor
+📌 Milagros Pozzo Fasini
+
+🗓️ Entrega: Octubre 2025 – CERP
