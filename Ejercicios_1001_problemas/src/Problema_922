@@ -1,0 +1,15 @@
+Problema 922
+// Solo lectura con FileInputStream
+FileInputStream archivo = new FileInputStream("archivo.txt");
+
+// Solo lectura con RandomAccessFile
+RandomAccessFile archivo = new RandomAccessFile("archivo.txt", "r");
+
+// Lectura y escritura
+RandomAccessFile archivo = new RandomAccessFile("archivo.txt", "rw");
+
+// Lectura, escritura y sync completa
+RandomAccessFile archivo = new RandomAccessFile("archivo.txt", "rws");
+
+// Lectura, escritura y sync de datos
+RandomAccessFile archivo = new RandomAccessFile("archivo.txt", "rwd");

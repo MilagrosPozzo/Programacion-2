@@ -1,0 +1,15 @@
+Problema 14 – ¿Cómo le explicarías a un amigo la diferencia entre un intérprete y el compilador que usa Java (javac + JVM)?
+ Diferencia entre un intérprete y el compilador que usa Java
+
+Para explicar la diferencia de forma sencilla: un intérprete lee y ejecuta el código línea por línea, como si alguien tradujera una receta a tu idioma mientras vas cocinando. Esto es más flexible pero más lento. Por ejemplo, lenguajes como Python usan intérprete.
+En cambio, un compilador traduce todo el código antes de ejecutarlo, como si te dieran la receta ya traducida desde el inicio.
+Java usa los dos métodos: primero, el compilador javac convierte el código en un archivo intermedio llamado bytecode (.class), y luego la JVM (Java Virtual Machine) lo interpreta o lo ejecuta. Por eso se dice que Java es un lenguaje compilado e interpretado a la vez.
+Esta combinación permite que Java sea multiplataforma y eficiente.
+
+Java usa una combinación: primero el compilador javac traduce el código fuente (.java) a bytecode (.class), que no es código máquina directo pero sí intermedio. Luego, la JVM (Java Virtual Machine) actúa como un intérprete del bytecode y lo ejecuta en cualquier sistema operativo. Esto hace que Java sea portable (escribís una vez, corrés en cualquier lado), pero también bastante eficiente gracias a técnicas como compilación Just-In-Time (JIT).
+
+Entonces:
+
+El compilador javac convierte el código a bytecode.
+
+La JVM interpreta (y a veces compila) ese bytecode para ejecutarlo en tiempo real.

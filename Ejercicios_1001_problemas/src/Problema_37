@@ -1,0 +1,10 @@
+Problema 37
+
+¿Cómo se asegura en Java que la implementación de un algoritmo es fiel a la lógica definida en pseudocódigo?
+
+Para asegurarse de que un algoritmo en Java sigue correctamente el pseudocódigo, lo primero es leer bien
+ cada paso del pseudocódigo y luego traducirlo línea por línea en Java, manteniendo la misma lógica.
+ Es importante usar nombres de variables claros y estructuras como if, while,o for que correspondan a las del
+ pseudocódigo. Después, se debe probar el programa con ejemplos (entradas y salidas) para confirmar que el
+ resultado es el esperado. También se pueden agregar comentarios en el código Java para indicar qué parte 
+del pseudocódigo se está implementando. Enlace a ejemplo.
