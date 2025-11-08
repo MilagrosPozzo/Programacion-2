@@ -93,18 +93,18 @@ public class CheckInGUI extends JFrame {
     }
 
     // Refrescar la tabla con todas las inscripciones actuales
-    private void actualizarTabla() {
-        modeloTabla.setRowCount(0); // Limpiar filas previas
-        List<Inscripcion> inscripciones = service.listar(); // Obtener todas las inscripciones
-        for (Inscripcion i : inscripciones) {
-            modeloTabla.addRow(new Object[]{
-                    i.getNombre(),
-                    i.getDocumento(),
-                    i.getCurso(),
-                    i.getFechaHora().toLocalTime().withNano(0) // Mostrar solo la hora (sin nanosegundos)
-            });
-        }
+   private void actualizarTabla() {
+    modeloTabla.setRowCount(0); // Limpiar filas previas
+    List<Inscripcion> inscripciones = service.listar(); // Obtener todas las inscripciones
+    for (Inscripcion i : inscripciones) {
+        modeloTabla.addRow(new Object[]{
+                i.getNombre(),
+                i.getDocumento(),
+                i.getCurso(),
+                i.getHora() 
+        });
     }
+}
 
     // Refrescar el área de resumen con el conteo por curso
     private void actualizarResumen() {
