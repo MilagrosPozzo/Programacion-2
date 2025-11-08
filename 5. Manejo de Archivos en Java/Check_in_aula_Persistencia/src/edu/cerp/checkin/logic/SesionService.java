@@ -1,23 +1,36 @@
 package edu.cerp.checkin.logic;
 
 import edu.cerp.checkin.model.Inscripcion;
+import edu.cerp.checkin.persistencia.ArchivoManager;
 
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/** Lógica mínima en memoria (sin validaciones complejas). */
+/** Lógica mínima en memoria (con persistencia). */
 public class SesionService {
-    private final List<Inscripcion> inscripciones = new ArrayList<>();
+    private List<Inscripcion> inscripciones = new ArrayList<>();
+
+    public SesionService() {
+        // Cargar desde archivo
+        inscripciones = ArchivoManager.cargar();
+
+        // Si está vacío, agregar datos demo
+        if (inscripciones.isEmpty()) {
+            cargarDatosDemo();
+            ArchivoManager.guardar(inscripciones);
+        }
+    }
 
     public void registrar(String nombre, String documento, String curso) {
         if (nombre == null || nombre.isBlank()) nombre = "(sin nombre)";
         if (documento == null) documento = "";
         if (curso == null || curso.isBlank()) curso = "Prog 1";
-        inscripciones.add(new Inscripcion(nombre.trim(), documento.trim(), curso.trim(), LocalDateTime.now()));
-    }
 
-    public SesionService() {
+        inscripciones.add(new Inscripcion(nombre.trim(), documento.trim(), curso.trim()));
+
+        // Guardar cada vez que se registra
+        ArchivoManager.guardar(inscripciones);
     }
 
     public List<Inscripcion> listar() { return Collections.unmodifiableList(inscripciones); }
@@ -35,7 +48,8 @@ public class SesionService {
                 .collect(Collectors.groupingBy(Inscripcion::getCurso, LinkedHashMap::new, Collectors.counting()));
         StringBuilder sb = new StringBuilder();
         sb.append("Total: ").append(inscripciones.size()).append("\nPor curso:\n");
-        for (var e : porCurso.entrySet()) sb.append(" - ").append(e.getKey()).append(": ").append(e.getValue()).append("\n");
+        for (var e : porCurso.entrySet())
+            sb.append(" - ").append(e.getKey()).append(": ").append(e.getValue()).append("\n");
         return sb.toString();
     }
 

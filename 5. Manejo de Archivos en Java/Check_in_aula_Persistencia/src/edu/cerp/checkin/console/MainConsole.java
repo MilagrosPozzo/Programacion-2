@@ -37,7 +37,7 @@ public class MainConsole {
     private static void listar(List<Inscripcion> ls){
         System.out.println("Nombre | Documento | Curso | Hora");
         for (Inscripcion i: ls) {
-            System.out.println(i.getNombre()+" | "+i.getDocumento()+" | "+i.getCurso()+" | "+i.getFechaHora());
+            System.out.println(i.getNombre()+" | "+i.getDocumento()+" | "+i.getCurso()+" | "+i.getHora());
         }
     }
 }
