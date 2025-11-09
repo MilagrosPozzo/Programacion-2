@@ -1,60 +1,56 @@
 package edu.cerp.checkin.logic;
 
 import edu.cerp.checkin.model.Inscripcion;
+import edu.cerp.checkin.persistencia.ArchivoManager;  // Importamos el manejador
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/** Lógica mínima en memoria (sin validaciones complejas). */
+/** Lógica mínima con persistencia integrada. */
 public class SesionService {
     private final List<Inscripcion> inscripciones = new ArrayList<>();
 
-    // === Constructor ===
+    // ✅ Constructor: carga los datos guardados al iniciar
     public SesionService() {
-        // Al iniciar, podrías cargar datos desde archivo si tenés persistencia (versión futura)
+        inscripciones.addAll(ArchivoManager.cargar());
     }
 
-    // === Registrar una nueva inscripción ===
     public void registrar(String nombre, String documento, String curso) {
         if (nombre == null || nombre.isBlank()) nombre = "(sin nombre)";
         if (documento == null) documento = "";
         if (curso == null || curso.isBlank()) curso = "Prog 1";
+        inscripciones.add(new Inscripcion(nombre.trim(), documento.trim(), curso.trim(), LocalDateTime.now()));
 
-        // Crea una nueva inscripción con hora automática
-        inscripciones.add(new Inscripcion(nombre.trim(), documento.trim(), curso.trim()));
+        // ✅ Cada vez que se registra, guarda todo
+        ArchivoManager.guardar(inscripciones);
     }
 
-    // === Listar todas las inscripciones ===
-    public List<Inscripcion> listar() {
-        return Collections.unmodifiableList(inscripciones);
-    }
+    public List<Inscripcion> listar() { return Collections.unmodifiableList(inscripciones); }
 
-    // === Buscar por texto (en nombre o documento) ===
     public List<Inscripcion> buscar(String q) {
         if (q == null || q.isBlank()) return listar();
         String s = q.toLowerCase();
         return inscripciones.stream()
-                .filter(i -> i.getNombre().toLowerCase().contains(s) 
-                          || i.getDocumento().toLowerCase().contains(s))
+                .filter(i -> i.getNombre().toLowerCase().contains(s) || i.getDocumento().toLowerCase().contains(s))
                 .collect(Collectors.toList());
     }
 
-    // === Mostrar resumen por curso ===
     public String resumen() {
         Map<String, Long> porCurso = inscripciones.stream()
                 .collect(Collectors.groupingBy(Inscripcion::getCurso, LinkedHashMap::new, Collectors.counting()));
         StringBuilder sb = new StringBuilder();
         sb.append("Total: ").append(inscripciones.size()).append("\nPor curso:\n");
-        for (var e : porCurso.entrySet()) {
-            sb.append(" - ").append(e.getKey()).append(": ").append(e.getValue()).append("\n");
-        }
+        for (var e : porCurso.entrySet()) sb.append(" - ").append(e.getKey()).append(": ").append(e.getValue()).append("\n");
         return sb.toString();
     }
 
-    // === Cargar datos de prueba ===
+    /** Datos de prueba (opcional, si el archivo está vacío). */
     public void cargarDatosDemo() {
-        registrar("Ana Pérez", "51234567", "Prog 2");
-        registrar("Luis Gómez", "49887766", "Prog 1");
-        registrar("Camila Díaz", "53422110", "Base de Datos");
+        if (inscripciones.isEmpty()) {  // solo si no hay datos guardados
+            registrar("Ana Pérez", "51234567", "Prog 2");
+            registrar("Luis Gómez", "49887766", "Prog 1");
+            registrar("Camila Díaz", "53422110", "Base de Datos");
+        }
     }
 }

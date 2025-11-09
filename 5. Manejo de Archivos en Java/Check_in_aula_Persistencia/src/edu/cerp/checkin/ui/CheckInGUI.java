@@ -101,7 +101,7 @@ public class CheckInGUI extends JFrame {
                 i.getNombre(),
                 i.getDocumento(),
                 i.getCurso(),
-                i.getHora() 
+                i.getFechaHora()
         });
     }
 }
