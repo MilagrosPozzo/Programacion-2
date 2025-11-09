@@ -106,13 +106,6 @@ yaml
 Copiar código
 
 ---
-
-✅ **Con esto:**
-- GitHub mostrará los bloques de código correctamente.
-- Las secciones se verán bien separadas.
-- No tendrás errores de cierre de bloque ni formato.
-
-¿Querés que te agregue una línea final con una **imagen de la GUI funcionando con persistencia** (por ejemplo una captura)?  
-Podría incluir algo como:  
+ 
 ```markdown
 ![Interfaz gráfica del proyecto](capturas/gui_checkin.png)
