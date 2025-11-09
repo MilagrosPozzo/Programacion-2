@@ -47,8 +47,7 @@ java -cp out edu.cerp.checkin.App
 java -cp out edu.cerp.checkin.App --gui
 ```
 📂 Estructura mínima del proyecto
-bash
-Copiar código
+```bash
 src/
 └─ edu/cerp/checkin/
    ├─ model/
@@ -64,25 +63,23 @@ src/
    └─ App.java
 data/
 └─ inscripciones.csv
-
+```
 ### 💾 Persistencia implementada
 Para esta versión, se incorporó un sistema de persistencia simple mediante archivos CSV.
 Los datos se almacenan automáticamente cada vez que se registra una nueva inscripción y se cargan al iniciar la aplicación, tanto en modo consola como en modo GUI.
 
 📁 Archivo utilizado:
 ```bash
-Copiar código
 data/inscripciones.csv
 ```
 Cada línea contiene:
 
-```Copiar código
+```
 nombre|documento|curso|fechaHora
 ```
 Ejemplo:
 
 ```less
-Copiar código
 Ana Pérez|51234567|Prog 2|2025-11-09T15:14:35
 ```
 ### 🧠 Reflexión pedagógica
@@ -101,9 +98,6 @@ Esta elección equilibra la simplicidad técnica con la claridad conceptual, ide
 ## 👩‍🏫 Autora
 Milagros Pozzo Fasini – CERP SW
 Proyecto académico: Programación 2 – Módulo “Manejo de Archivos en Java”
-
-yaml
-Copiar código
 
 ---
  
