@@ -85,10 +85,12 @@ Ana Pérez|51234567|Prog 2|2025-11-09T15:14:35
 ```
 ### 🧠 Reflexión sobre la persistencia elegida
 
-Para este proyecto educativo se eligió implementar la persistencia utilizando un **archivo CSV (valores separados por comas o barras verticales)**.  
+Para este proyecto educativo se eligió implementar la persistencia utilizando un **archivo CSV (valores separados por comas o barras verticales)**. 
+
 Este formato fue el más adecuado porque permite guardar los registros de manera **simple, legible y accesible** sin necesidad de bibliotecas externas ni bases de datos.  
 
 Además, los archivos CSV pueden abrirse fácilmente en herramientas como **Excel o Google Sheets**, lo que facilita la comprensión del formato de almacenamiento para los estudiantes.  
+
 De esta forma, se logra **introducir el concepto de persistencia de datos en Java** de una manera clara y didáctica, reforzando los fundamentos de entrada/salida de archivos antes de avanzar hacia soluciones más complejas como bases de datos o JSON.
 
 ## 👩‍🏫 Autora
