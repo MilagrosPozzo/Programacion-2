@@ -46,8 +46,8 @@ java -cp out edu.cerp.checkin.App
 ```bash
 java -cp out edu.cerp.checkin.App --gui
 ```
-📂 Estructura mínima del proyecto
-```bash
+## 📂 Estructura mínima del proyecto
+```
 src/
 └─ edu/cerp/checkin/
    ├─ model/
@@ -64,6 +64,7 @@ src/
 data/
 └─ inscripciones.csv
 ```
+
 ### 💾 Persistencia implementada
 Para esta versión, se incorporó un sistema de persistencia simple mediante archivos CSV.
 Los datos se almacenan automáticamente cada vez que se registra una nueva inscripción y se cargan al iniciar la aplicación, tanto en modo consola como en modo GUI.
