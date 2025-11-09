@@ -102,5 +102,3 @@ Proyecto académico: Programación 2 – Módulo “Manejo de Archivos en Java�
 
 ---
  
-```markdown
-![Interfaz gráfica del proyecto](capturas/gui_checkin.png)
