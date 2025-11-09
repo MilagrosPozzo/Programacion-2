@@ -36,15 +36,16 @@ La aplicación puede ejecutarse:
 ### Desde terminal:
 ```bash
 javac -d out src/edu/cerp/checkin/**/*.java
+```
 📌 Ejecución
 🖥️ Modo consola
-bash
-Copiar código
+```bash
 java -cp out edu.cerp.checkin.App
+```
 🪟 Modo gráfico (GUI)
-bash
-Copiar código
+```bash
 java -cp out edu.cerp.checkin.App --gui
+```
 📂 Estructura mínima del proyecto
 bash
 Copiar código
@@ -63,7 +64,8 @@ src/
    └─ App.java
 data/
 └─ inscripciones.csv
-💾 Persistencia implementada
+
+### 💾 Persistencia implementada
 Para esta versión, se incorporó un sistema de persistencia simple mediante archivos CSV.
 Los datos se almacenan automáticamente cada vez que se registra una nueva inscripción y se cargan al iniciar la aplicación, tanto en modo consola como en modo GUI.
 
