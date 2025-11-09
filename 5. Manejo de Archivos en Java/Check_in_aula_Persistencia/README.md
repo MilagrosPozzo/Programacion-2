@@ -70,19 +70,22 @@ Para esta versión, se incorporó un sistema de persistencia simple mediante arc
 Los datos se almacenan automáticamente cada vez que se registra una nueva inscripción y se cargan al iniciar la aplicación, tanto en modo consola como en modo GUI.
 
 📁 Archivo utilizado:
-bash
+```bash
 Copiar código
 data/inscripciones.csv
+```
 Cada línea contiene:
 
-Copiar código
+```Copiar código
 nombre|documento|curso|fechaHora
+```
 Ejemplo:
 
-less
+```less
 Copiar código
 Ana Pérez|51234567|Prog 2|2025-11-09T15:14:35
-🧠 Reflexión pedagógica
+```
+### 🧠 Reflexión pedagógica
 Se eligió el formato CSV (Comma Separated Values) porque:
 
 Es simple de implementar en proyectos educativos.
@@ -95,7 +98,7 @@ Favorece la comprensión de conceptos básicos de persistencia y manejo de archi
 
 Esta elección equilibra la simplicidad técnica con la claridad conceptual, ideal para cursos introductorios de programación y orientación educativa en lógica aplicada.
 
-👩‍🏫 Autora
+## 👩‍🏫 Autora
 Milagros Pozzo Fasini – CERP SW
 Proyecto académico: Programación 2 – Módulo “Manejo de Archivos en Java”
 
