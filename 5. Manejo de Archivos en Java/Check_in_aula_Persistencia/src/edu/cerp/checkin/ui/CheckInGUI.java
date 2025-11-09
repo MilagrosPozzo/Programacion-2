@@ -4,114 +4,127 @@ package edu.cerp.checkin.ui;
 import edu.cerp.checkin.logic.SesionService;
 import edu.cerp.checkin.model.Inscripcion;
 
-import javax.swing.*;   // Librería para ventanas, botones, etc.
-import javax.swing.table.DefaultTableModel; // Para usar tablas en la GUI
-import java.awt.*;      // Para layouts (cómo se acomodan los componentes)
-import java.util.List;  // Para trabajar con listas de inscripciones
+import javax.swing.*;          // Librerías Swing para GUI
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;            // Para layouts y colores
+import java.util.List;        // Para recorrer listas de inscripciones
 
 /**
- * Ventana de Check-in Aula (versión GUI con JTable + resumen por curso).
+ * Ventana principal de Check-in Aula (GUI)
+ * Permite registrar inscripciones y visualizar un resumen por curso.
  */
 public class CheckInGUI extends JFrame {
-    private final SesionService service;          // Servicio central: lógica de inscripciones
-    private final DefaultTableModel modeloTabla;  // Modelo que gestiona los datos de la JTable
-    private final JTextArea txtResumen;           // Área de texto para mostrar resumen por curso
 
-    // Campos de entrada de datos
+    // === Atributos principales ===
+    private final SesionService service;          // Reutiliza la lógica central
+    private final DefaultTableModel modeloTabla;  // Modelo para la JTable
+    private final JTextArea txtResumen;           // Muestra el resumen por curso
+
+    // Campos del formulario
     private JTextField txtNombre;
     private JTextField txtDocumento;
     private JComboBox<String> cbCurso;
 
-    // Constructor: arma toda la ventana
+    // === Constructor ===
     public CheckInGUI(SesionService service) {
-        super("Check-in Aula (GUI)"); // Título de la ventana
+        super("Check-in Aula (GUI)");
         this.service = service;
 
-        // ==== Crear componentes ====
-        txtNombre = new JTextField(15);   // Campo para nombre
-        txtDocumento = new JTextField(10); // Campo para documento
-        cbCurso = new JComboBox<>(new String[]{"Prog 1", "Prog 2", "Base de Datos"}); // Combo de cursos
-        JButton btnRegistrar = new JButton("Registrar ✔"); // Botón para registrar inscripción
+        // === CONFIGURACIÓN BÁSICA DE LA VENTANA ===
+        setLayout(new BorderLayout(10, 10));
+        getContentPane().setBackground(new Color(245, 248, 250)); // fondo claro
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(650, 450);
+        setLocationRelativeTo(null); // Centrar ventana
 
-        // Definición de columnas de la tabla
+        // === CAMPOS DE ENTRADA ===
+        txtNombre = new JTextField(15);
+        txtDocumento = new JTextField(10);
+        cbCurso = new JComboBox<>(new String[]{"Prog 1", "Prog 2", "Base de Datos"});
+        JButton btnRegistrar = new JButton("Registrar ✔");
+
+        // === TABLA DE INSCRIPCIONES ===
         String[] columnas = {"Nombre", "Documento", "Curso", "Hora"};
-        modeloTabla = new DefaultTableModel(columnas, 0); // Modelo vacío
-        JTable tabla = new JTable(modeloTabla);           // Tabla que usa el modelo
-        JScrollPane scrollTabla = new JScrollPane(tabla); // Scroll para la tabla
+        modeloTabla = new DefaultTableModel(columnas, 0);
+        JTable tabla = new JTable(modeloTabla);
+        tabla.setFillsViewportHeight(true);
+        tabla.setRowHeight(22);
+        tabla.setGridColor(Color.LIGHT_GRAY);
+        JScrollPane scrollTabla = new JScrollPane(tabla);
 
-        // Área de resumen debajo de la tabla
+        // === ÁREA DE RESUMEN ===
         txtResumen = new JTextArea(5, 30);
-        txtResumen.setEditable(false);                    // Solo lectura
+        txtResumen.setEditable(false);
+        txtResumen.setFont(new Font("Consolas", Font.PLAIN, 12));
+        txtResumen.setBackground(new Color(250, 250, 250));
+        txtResumen.setBorder(BorderFactory.createTitledBorder("Resumen por curso"));
         JScrollPane scrollResumen = new JScrollPane(txtResumen);
 
-        // ==== Panel del formulario (arriba) ====
-        JPanel form = new JPanel(new GridLayout(4, 2, 5, 5)); // 4 filas, 2 columnas
+        // === PANEL DEL FORMULARIO ===
+        JPanel form = new JPanel(new GridLayout(4, 2, 5, 5));
+        form.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         form.add(new JLabel("Nombre:"));    form.add(txtNombre);
         form.add(new JLabel("Documento:")); form.add(txtDocumento);
         form.add(new JLabel("Curso:"));     form.add(cbCurso);
         form.add(new JLabel(""));           form.add(btnRegistrar);
 
-        // ==== Layout principal de la ventana ====
-        setLayout(new BorderLayout(10, 10));
-        add(form, BorderLayout.NORTH);       // Formulario arriba
-        add(scrollTabla, BorderLayout.CENTER); // Tabla en el centro
-        add(scrollResumen, BorderLayout.SOUTH); // Resumen abajo
+        // === ORGANIZAR COMPONENTES ===
+        add(form, BorderLayout.NORTH);
+        add(scrollTabla, BorderLayout.CENTER);
+        add(scrollResumen, BorderLayout.SOUTH);
 
-        // ==== Acción del botón Registrar ====
+        // === ACCIÓN DEL BOTÓN REGISTRAR ===
         btnRegistrar.addActionListener(e -> {
-            String n = txtNombre.getText().trim();  // Obtener nombre
-            String d = txtDocumento.getText().trim(); // Obtener documento
-            String c = (String) cbCurso.getSelectedItem(); // Obtener curso
+            String n = txtNombre.getText().trim();
+            String d = txtDocumento.getText().trim();
+            String c = (String) cbCurso.getSelectedItem();
 
-            // Validación simple: no aceptar nombre vacío
+            // Validación simple: nombre no vacío
             if (n.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "El nombre no puede estar vacío.", 
-                                              "Error de validación", JOptionPane.WARNING_MESSAGE);
-                return; // No registrar si no hay nombre
+                JOptionPane.showMessageDialog(this, 
+                        "El nombre no puede estar vacío.", 
+                        "Error de validación", 
+                        JOptionPane.WARNING_MESSAGE);
+                return;
             }
 
-            // Registrar inscripción usando la lógica central (SesionService)
+            // Registrar nueva inscripción
             service.registrar(n, d, c);
 
-            // Refrescar tabla y resumen
+            // Actualizar visualización
             actualizarTabla();
             actualizarResumen();
 
-            // Limpiar los campos de entrada
+            // Limpiar campos
             txtNombre.setText("");
             txtDocumento.setText("");
         });
 
-        // ==== Inicializar ventana con datos precargados ====
+        // === CARGA INICIAL DE DATOS ===
         actualizarTabla();
         actualizarResumen();
-
-        // Configuración final de la ventana
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cerrar aplicación al salir
-        setSize(600, 400);                              // Tamaño por defecto
-        setLocationRelativeTo(null);                    // Centrar en pantalla
     }
 
-    // Refrescar la tabla con todas las inscripciones actuales
-   private void actualizarTabla() {
-    modeloTabla.setRowCount(0); // Limpiar filas previas
-    List<Inscripcion> inscripciones = service.listar(); // Obtener todas las inscripciones
-    for (Inscripcion i : inscripciones) {
-        modeloTabla.addRow(new Object[]{
-                i.getNombre(),
-                i.getDocumento(),
-                i.getCurso(),
-                i.getFechaHora()
-        });
+    // === MÉTODO PARA ACTUALIZAR TABLA ===
+    private void actualizarTabla() {
+        modeloTabla.setRowCount(0); // limpiar tabla
+        List<Inscripcion> inscripciones = service.listar();
+        for (Inscripcion i : inscripciones) {
+            modeloTabla.addRow(new Object[]{
+                    i.getNombre(),
+                    i.getDocumento(),
+                    i.getCurso(),
+                    i.getFechaHora().toLocalTime().withNano(0) // solo hora
+            });
+        }
     }
-}
 
-    // Refrescar el área de resumen con el conteo por curso
+    // === MÉTODO PARA ACTUALIZAR RESUMEN ===
     private void actualizarResumen() {
-        txtResumen.setText(service.resumen()); // Llama al método resumen() de SesionService
+        txtResumen.setText(service.resumen());
     }
 
-    // Método estático que usa App.java para abrir la GUI
+    // === MÉTODO ESTÁTICO PARA MOSTRAR LA GUI ===
     public static void show(SesionService service) {
         SwingUtilities.invokeLater(() -> new CheckInGUI(service).setVisible(true));
     }
