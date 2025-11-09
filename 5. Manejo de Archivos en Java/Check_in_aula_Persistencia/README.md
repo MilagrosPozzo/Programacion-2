@@ -97,8 +97,9 @@ Favorece la comprensión de conceptos básicos de persistencia y manejo de archi
 Esta elección equilibra la simplicidad técnica con la claridad conceptual, ideal para cursos introductorios de programación y orientación educativa en lógica aplicada.
 
 ## 👩‍🏫 Autora
-Milagros Pozzo Fasini – CERP SW
-Proyecto académico: Programación 2 – Módulo “Manejo de Archivos en Java”
+Milagros Pozzo Fasini 
+
+🗓️ Entrega: Noviembre 2025 – CERP SW
 
 ---
  
