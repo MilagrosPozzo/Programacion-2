@@ -83,18 +83,13 @@ Ejemplo:
 ```less
 Ana Pérez|51234567|Prog 2|2025-11-09T15:14:35
 ```
-### 🧠 Reflexión pedagógica
-Se eligió el formato CSV (Comma Separated Values) porque:
+### 🧠 Reflexión sobre la persistencia elegida
 
-Es simple de implementar en proyectos educativos.
+Para este proyecto educativo se eligió implementar la persistencia utilizando un **archivo CSV (valores separados por comas o barras verticales)**.  
+Este formato fue el más adecuado porque permite guardar los registros de manera **simple, legible y accesible** sin necesidad de bibliotecas externas ni bases de datos.  
 
-Permite visualizar y editar los datos fácilmente desde herramientas comunes como Excel o Google Sheets.
-
-No requiere bibliotecas externas ni configuración adicional.
-
-Favorece la comprensión de conceptos básicos de persistencia y manejo de archivos en Java, sin sobrecargar al estudiante con detalles de bases de datos.
-
-Esta elección equilibra la simplicidad técnica con la claridad conceptual, ideal para cursos introductorios de programación y orientación educativa en lógica aplicada.
+Además, los archivos CSV pueden abrirse fácilmente en herramientas como **Excel o Google Sheets**, lo que facilita la comprensión del formato de almacenamiento para los estudiantes.  
+De esta forma, se logra **introducir el concepto de persistencia de datos en Java** de una manera clara y didáctica, reforzando los fundamentos de entrada/salida de archivos antes de avanzar hacia soluciones más complejas como bases de datos o JSON.
 
 ## 👩‍🏫 Autora
 Milagros Pozzo Fasini 
