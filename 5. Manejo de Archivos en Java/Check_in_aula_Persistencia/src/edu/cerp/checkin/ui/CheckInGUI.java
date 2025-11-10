@@ -116,7 +116,7 @@ public class CheckInGUI extends JFrame {
                     i.getNombre(),
                     i.getDocumento(),
                     i.getCurso(),
-                    i.getFechaHora().toLocalTime().withNano(0) // solo hora, sin nanosegundos
+                    i.getFechaHora().toLocalDate() +" "+ i.getFechaHora().toLocalTime().withNano(0)
             });
         }
     }
