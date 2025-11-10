@@ -62,6 +62,7 @@ public class CheckInGUI extends JFrame {
 
         // === PANEL DEL FORMULARIO ===
         JPanel form = new JPanel(new GridLayout(4, 2, 5, 5));
+        // BorderLayout permite organizar componentes en 5 zonas (North, Center, South, East, West)
         form.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         form.add(new JLabel("Nombre:"));    form.add(txtNombre);
         form.add(new JLabel("Documento:")); form.add(txtDocumento);
@@ -79,7 +80,8 @@ public class CheckInGUI extends JFrame {
             String d = txtDocumento.getText().trim();
             String c = (String) cbCurso.getSelectedItem();
 
-            // Validación simple: nombre no vacío
+          // Validación simple: nombre no vacío
+         // TODO: Agregar validación para documento (formato, no duplicados)
             if (n.isEmpty()) {
                 JOptionPane.showMessageDialog(this, 
                         "El nombre no puede estar vacío.", 
@@ -107,14 +109,14 @@ public class CheckInGUI extends JFrame {
 
     // === MÉTODO PARA ACTUALIZAR TABLA ===
     private void actualizarTabla() {
-        modeloTabla.setRowCount(0); // limpiar tabla
+        modeloTabla.setRowCount(0); // elimina todas las filas de la tabla
         List<Inscripcion> inscripciones = service.listar();
         for (Inscripcion i : inscripciones) {
             modeloTabla.addRow(new Object[]{
                     i.getNombre(),
                     i.getDocumento(),
                     i.getCurso(),
-                    i.getFechaHora().toLocalTime().withNano(0) // solo hora
+                    i.getFechaHora().toLocalTime().withNano(0) // solo hora, sin nanosegundos
             });
         }
     }
@@ -126,6 +128,7 @@ public class CheckInGUI extends JFrame {
 
     // === MÉTODO ESTÁTICO PARA MOSTRAR LA GUI ===
     public static void show(SesionService service) {
+   // invokeLater asegura que la GUI se cree en el hilo de eventos de Swing (thread-safe)
         SwingUtilities.invokeLater(() -> new CheckInGUI(service).setVisible(true));
     }
 }
