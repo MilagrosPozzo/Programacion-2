@@ -81,7 +81,7 @@ nombre|documento|curso|fechaHora
 Ejemplo:
 
 ```less
-Ana Pérez|51234567|Prog 2|2025-11-09T15:14:35
+Ana Pérez|51234567|Prog 2|2025-11-09|15:14:35
 ```
 ### 🧠 Reflexión sobre la persistencia elegida
 
